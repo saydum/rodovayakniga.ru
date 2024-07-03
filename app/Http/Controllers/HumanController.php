@@ -13,12 +13,12 @@ class HumanController extends Controller
     public function index(): View
     {
         $humans = Human::paginate(10);
-        return view('humans.index', compact('humans'));
+        return view('app.humans.index', compact('humans'));
     }
 
     public function create(): View
     {
-        return view('humans.create');
+        return view('app.humans.create');
     }
 
     public function store(CreateHumenRequest $request): RedirectResponse
@@ -29,12 +29,12 @@ class HumanController extends Controller
 
     public function show(Human $human): View
     {
-        return view('humans.show', compact('human'));
+        return view('app.humans.show', compact('human'));
     }
 
     public function edit(Human $human): View
     {
-        return view('humans.edit', compact('human'));
+        return view('app.humans.edit', compact('human'));
     }
 
     public function update(UpdateHumanRequest $request): RedirectResponse
