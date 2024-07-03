@@ -24,7 +24,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -37,22 +37,22 @@
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" data-lte-toggle="sidebar" href="#" role="button"> <i
                             class="bi bi-list"></i> </a></li>
-{{--                <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Home</a></li>--}}
-{{--                <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Contact</a></li>--}}
+                {{--                <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Home</a></li>--}}
+                {{--                <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Contact</a></li>--}}
             </ul> <!--end::Start Navbar Links--> <!--begin::End Navbar Links-->
         </div> <!--end::Container-->
     </nav> <!--end::Header--> <!--begin::Sidebar-->
 
     <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
         <div class="sidebar-brand"> <!--begin::Brand Link-->
-            <!--begin::Brand Text--> <span class="brand-text fw-light">rodovayakniga.ru</span> <!--end::Brand Text-->
+            <!--begin::Brand Text--> <span class="brand-text fw-light">rodovayakniga</span> <!--end::Brand Text-->
             <!--end::Brand Link--> </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
         <div class="sidebar-wrapper">
             <nav class="mt-2"> <!--begin::Sidebar Menu-->
                 <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                     @include('layouts.app.embed.sidebar')
 
-{{--                    <li class="nav-header">SYSTEMS</li>--}}
+                    {{--                    <li class="nav-header">SYSTEMS</li>--}}
 
                 </ul> <!--end::Sidebar Menu-->
             </nav>
@@ -63,7 +63,7 @@
             <div class="container-fluid"> <!--begin::Row-->
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3 class="mb-0">@yield('page-title')</h3>
+                        <h3 class="mb-0">@yield('title')</h3>
                     </div>
 
                 </div> <!--end::Row-->
@@ -71,9 +71,7 @@
         </div> <!--end::App Content Header--> <!--begin::App Content-->
         <div class="app-content"> <!--begin::Container-->
             <div class="container-fluid"> <!--begin::Row-->
-                <div class="card py-3 p-3">
-                    @yield('content')
-                </div>
+                @yield('content')
             </div> <!--end::Container-->
         </div> <!--end::App Content-->
     </main> <!--end::App Main--> <!--begin::Footer-->
