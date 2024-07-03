@@ -37,9 +37,9 @@ class HumanController extends Controller
         return view('app.humans.edit', compact('human'));
     }
 
-    public function update(UpdateHumanRequest $request): RedirectResponse
+    public function update(UpdateHumanRequest $request, Human $human): RedirectResponse
     {
-        Human::update($request->validated());
+        $human->update($request->validated());
         return redirect()->route('humans.index')->with('status', 'Human successfully updated.');
     }
 

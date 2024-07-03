@@ -6,7 +6,7 @@
         name="{{ $name }}"
         class="{{ $class }}"
         placeholder="{{ $placeholder }}"
-        value="{{ old($name) }}">
+        value="{{ $value }}">
 </div>
 
 @error($name)
