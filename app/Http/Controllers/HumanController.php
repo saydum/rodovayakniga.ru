@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Human;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\Human\CreateHumenRequest;
 use App\Http\Requests\Human\UpdateHumanRequest;
+use App\Http\Requests\Human\CreateHumanRequest;
 
 class HumanController extends Controller
 {
@@ -21,7 +21,7 @@ class HumanController extends Controller
         return view('app.humans.create');
     }
 
-    public function store(CreateHumenRequest $request): RedirectResponse
+    public function store(CreateHumanRequest $request): RedirectResponse
     {
         Human::create($request->validated());
         return redirect()->route('humans.index')->with('success', 'Human has been created.');

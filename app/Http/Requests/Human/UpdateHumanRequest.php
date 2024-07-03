@@ -27,8 +27,8 @@ class UpdateHumanRequest extends FormRequest
             'surname' => ['nullable', 'string', 'max:255'],
             'birth_date' => ['nullable', 'date'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
-            'mother_id' => ['nullable', 'integer', 'exists:mothers,id'],
-            'father_id' => ['nullable', 'integer', 'exists:fathers,id'],
+            'mother_id' => ['nullable', 'integer', 'exists:humans,id'],
+            'father_id' => ['nullable', 'integer', 'exists:humans,id'],
         ];
     }
 }

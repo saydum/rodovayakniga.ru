@@ -22,8 +22,8 @@ return new class extends Migration
             $table->unsignedBigInteger('mother_id')->nullable();
             $table->unsignedBigInteger('father_id')->nullable();
 
-            $table->foreign('mother_id')->references('id')->on('mothers');
-            $table->foreign('father_id')->references('id')->on('fathers');
+            $table->foreign('mother_id')->references('id')->on('humans');
+            $table->foreign('father_id')->references('id')->on('humans');
 
             $table->timestamps();
         });
