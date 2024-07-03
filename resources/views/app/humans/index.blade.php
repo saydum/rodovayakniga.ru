@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
 
-                    <a href="#" class="btn btn-success">Добавить</a>
+                    <a href="{{ route('humans.create') }}" class="btn btn-success">Добавить</a>
 
                     <div class="card-tools">
                         <div class="input-group input-group-sm">
@@ -39,7 +39,7 @@
 
                             <tr>
                                 <td>{{ $human->id }}</td>
-                                <td>{{ $humans->name }}</td>
+                                <td>{{ $human->name }}</td>
                                 <td>{{ $human->las_name }}</td>
                                 <td>{{ $human->surname }}</td>
                                 <td>{{ $human->birth_date }}</td>
