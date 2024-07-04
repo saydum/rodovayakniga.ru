@@ -4,13 +4,12 @@
 
 @section('content')
     <div class="col">
-
         <div class="card card-success card-outline">
             <div class="card-body box-profile">
                 <div class="text-center">
                     <img
-                        class="profile-user-img img-fluid img-circle"
-                        src="{{ $human->image }}"
+                        class="profile-user-img img-fluid img-circle rounded-4 w-25 float-start"
+                        src="{{ asset($human->image) }}"
                         alt="{{ $human->name }}"
                     >
                 </div>

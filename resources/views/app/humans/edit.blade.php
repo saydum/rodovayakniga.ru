@@ -5,7 +5,7 @@
 @section('content')
     <div class="card card-success card-outline">
         <div class="card-body">
-            <form action="{{ route('humans.update', $human->id) }}" method="post">
+            <form action="{{ route('humans.update', $human->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row">

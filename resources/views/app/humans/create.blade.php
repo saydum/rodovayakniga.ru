@@ -5,7 +5,7 @@
 @section('content')
     <div class="card card-success card-outline">
         <div class="card-body">
-            <form action="{{ route('humans.store') }}" method="post">
+            <form action="{{ route('humans.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <x-input type="text" name="name" title="Имя" placeholder="Ведите имя" value="{{ old('name') }}" />
@@ -16,7 +16,7 @@
                     <x-input type="date" name="birth_date" title="Дата рождения" placeholder="Ведите дату рождения"  value="{{ old('birth_date') }}"  />
                 </div>
                 <div class="row">
-                    <x-input type="file" name="image" title="Фото"  value="{{ old('image') }}" />
+                    <x-input type="file" name="image" title="Фото" />
                 </div>
                 <button class="btn btn-success" type="submit">Добавить</button>
             </form>

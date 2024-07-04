@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Human;
+use App\Services\ImageStorageService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Human\UpdateHumanRequest;
@@ -10,6 +11,12 @@ use App\Http\Requests\Human\CreateHumanRequest;
 
 class HumanController extends Controller
 {
+
+    protected ImageStorageService $imageStorageService;
+
+    public function __construct(ImageStorageService $imageStorageService)
+    {}
+
     public function index(): View
     {
         $humans = Human::paginate(10);
@@ -23,7 +30,14 @@ class HumanController extends Controller
 
     public function store(CreateHumanRequest $request): RedirectResponse
     {
-        Human::create($request->validated());
+        $input = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images', 'public');
+            $input['image'] = "storage/".$path;
+        }
+
+        Human::create($input);
         return redirect()->route('humans.index')->with('success', 'Human has been created.');
     }
 
@@ -39,7 +53,14 @@ class HumanController extends Controller
 
     public function update(UpdateHumanRequest $request, Human $human): RedirectResponse
     {
-        $human->update($request->validated());
+        $input = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images', 'public');
+            $input['image'] = "storage/".$path;
+        }
+
+        $human->update($input);
         return redirect()->route('humans.index')->with('status', 'Human successfully updated.');
     }
 
