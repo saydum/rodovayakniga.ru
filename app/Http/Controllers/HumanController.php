@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Human;
-use App\Services\ImageStorageService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Human\UpdateHumanRequest;
@@ -11,12 +10,6 @@ use App\Http\Requests\Human\CreateHumanRequest;
 
 class HumanController extends Controller
 {
-
-    protected ImageStorageService $imageStorageService;
-
-    public function __construct(ImageStorageService $imageStorageService)
-    {}
-
     public function index(): View
     {
         $humans = Human::paginate(10);
