@@ -1,0 +1,183 @@
+.container-tree {
+    overflow: auto; /* Включаем скроллинг для контейнера */
+    max-width: 100%; /* Ограничиваем ширину контейнера для адаптивности */
+    max-height: 100%;
+}
+
+.tree {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+}
+
+.tree_ul {
+    padding-top: 20px;
+    position: relative;
+    transition: .5s;
+}
+
+.tree_li {
+    display: inline-table;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 10px;
+    transition: .5s;
+}
+
+.tree_li::before, .tree_li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 1px solid #ccc;
+    width: 51%;
+    height: 10px;
+}
+
+.tree_li::after {
+    right: auto;
+    left: 50%;
+    border-left: 1px solid #ccc;
+}
+
+.tree_li:only-child::after, .tree_li:only-child::before {
+    display: none;
+}
+
+.tree_li:only-child {
+    padding-top: 0;
+}
+
+.tree_li:first-child::before, .tree_li:last-child::after {
+    border: 0 none;
+}
+
+.tree_li:last-child::before {
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+}
+
+.tree_li:first-child::after {
+    border-radius: 5px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+}
+
+.tree_ul ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 1px solid #ccc;
+    width: 0;
+    height: 20px;
+}
+
+.tree_card {
+    width: 200px;
+    height: 180px;
+    border: 1px solid #ccc;
+    display: inline-grid;
+    border-radius: 5px;
+    text-align: start;
+    padding-left: 3px;
+}
+
+.tree_li a {
+    text-decoration-line: none;
+    transition: .5s;
+}
+
+.tree_li a img {
+    width: 85px;
+    height: 85px;
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px !important;
+    border-radius: 4px;
+}
+
+.tree_li a p {
+    color: #414040;
+    padding-top: 100px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+/*Hover-Section*/
+.tree_li a:hover, .tree_li a:hover i, .tree_li a:hover .tree_li a:hover + ul li a {
+    background: rgba(200, 228, 248, 0.56);
+    color: #000;
+}
+
+.tree_li a:hover + ul li::after, .tree_li a:hover + ul li::before, .tree_li a:hover + ul::before, .tree_li a:hover + ul ul::before {
+    border-color: #94a0b4;
+}
+
+.copyLink {
+    float: right;
+    position: relative;
+}
+
+.notif {
+    margin-right: 60px
+}
+
+/* Стили для маленьких экранов (планшеты и мобильные устройства) */
+@media only screen and (max-width: 768px) {
+    .container-tree {
+        overflow: auto; /* Включаем скроллинг для контейнера */
+        max-width: 100%; /* Ограничиваем ширину контейнера для адаптивности */
+        max-height: 100%; /* Максимальная высота контейнера, после чего появятся скроллы */
+        height: 670px;
+    }
+
+    .tree_ul {
+        padding-top: 20px;
+        white-space: nowrap; /* Запрещаем перенос строк */
+    }
+
+    .tree_li {
+        display: inline-block; /* Изменяем отображение элементов на строчные блоки */
+        vertical-align: top;
+        text-align: center;
+        list-style-type: none;
+        position: relative;
+        padding: 10px;
+    }
+
+    .tree_card {
+        /*width: calc(100% - 20px); !* Ширина карточки равна 100% минус отступы и границы *!*/
+        max-width: 200px; /* Максимальная ширина, чтобы не разъезжались на очень широких экранах */
+        height: auto; /* Высота будет автоматически рассчитываться в зависимости от содержимого */
+        /*margin: 10px; !* Добавляем отступы для улучшения визуального отображения *!*/
+    }
+
+    .tree_card img {
+        width: 100%; /* Изображение займет всю доступную ширину карточки */
+        height: auto; /* Автоматически рассчитанная высота */
+        border-radius: 4px;
+        margin: 5px 10px 5px 0;
+    }
+
+    .tree_li a p {
+        padding-left: 3px;
+        padding-top: 5px; /* Изменяем верхний отступ у текста внутри карточек */
+        font-size: 12px; /* Уменьшаем размер шрифта для маленьких экранов */
+        white-space: normal !important; /* Устанавливаем режим переноса слов на обычный */
+        overflow-wrap: break-word !important; /* Устанавливаем перенос слов */
+        word-wrap: break-word !important; /* Устанавливаем перенос слов для старых браузеров */
+    }
+
+    .copyLink {
+        float: left;
+        position: relative;
+        padding-top: 15px;
+    }
+}

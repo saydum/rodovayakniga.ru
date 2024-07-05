@@ -26,4 +26,14 @@ class Human extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function father(): BelongsTo
+    {
+        return $this->belongsTo(Human::class, 'father_id');
+    }
+
+    public function mother(): BelongsTo
+    {
+        return $this->belongsTo(Human::class, 'mother_id');
+    }
 }

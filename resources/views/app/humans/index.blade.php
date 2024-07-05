@@ -49,7 +49,7 @@
                                     <a class="btn btn-primary" href="{{ route('humans.edit', $human->id) }}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <a class="btn btn-outline-success" href="{{ route('humans.show', $human->id) }}">
+                                    <a class="btn btn-outline-success" href="{{ route('rodovoe-drevo.index', $human->id) }}">
                                         <i class="bi bi-arrows-fullscreen"></i>
                                     </a>
                                 </td>
