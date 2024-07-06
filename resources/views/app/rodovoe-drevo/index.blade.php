@@ -17,7 +17,7 @@
                                 {{-- 1 --}}
                                 <div class="tree_card">
                                     <a
-                                        href="javascript:void(0);"
+                                        href="{{ route('humans.show', $human->id) }}"
                                         data-mdb-ripple-init
                                         data-mdb-modal-init
                                         data-mdb-target="#show-info-modal"
@@ -32,7 +32,7 @@
                                         <li class="tree_li">
                                             <div class="tree_card">
                                                 <a
-                                                    href="javascript:void(0);"
+                                                    href="{{ route('humans.show', $father->id) }}"
                                                     data-mdb-ripple-init
                                                     data-mdb-modal-init
                                                     data-mdb-target="#show-info-modal"
@@ -46,7 +46,7 @@
                                                     <li class="tree_li">
                                                         <div class="tree_card">
                                                             <a
-                                                                href="javascript:void(0);"
+                                                                href="{{ route('humans.show', $fatherGrandfather->id) }}"
                                                                 data-mdb-ripple-init
                                                                 data-mdb-modal-init
                                                                 data-mdb-target="#show-info-modal"
@@ -63,7 +63,7 @@
                                                     <li class="tree_li">
                                                         <div class="tree_card">
                                                             <a
-                                                                href="javascript:void(0);"
+                                                                href="{{ route('humans.show', $fatherGrandmother->id) }}"
                                                                 data-mdb-ripple-init
                                                                 data-mdb-modal-init
                                                                 data-mdb-target="#show-info-modal"
@@ -83,7 +83,7 @@
                                         <li class="tree_li">
                                             <div class="tree_card">
                                                 <a
-                                                    href="javascript:void(0);"
+                                                    href="{{ route('humans.show', $mother->id) }}"
                                                     data-mdb-ripple-init
                                                     data-mdb-modal-init
                                                     data-mdb-target="#show-info-modal"
@@ -97,7 +97,7 @@
                                                     <li class="tree_li">
                                                         <div class="tree_card">
                                                             <a
-                                                                href="javascript:void(0);"
+                                                                href="{{ route('humans.show', $motherGrandfather->id) }}"
                                                                 data-mdb-ripple-init
                                                                 data-mdb-modal-init
                                                                 data-mdb-target="#show-info-modal"
@@ -114,7 +114,7 @@
                                                     <li class="tree_li">
                                                         <div class="tree_card">
                                                             <a
-                                                                href="javascript:void(0);"
+                                                                href="{{ route('humans.show', $motherGrandmother->id) }}"
                                                                 data-mdb-ripple-init
                                                                 data-mdb-modal-init
                                                                 data-mdb-target="#show-info-modal"
