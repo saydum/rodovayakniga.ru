@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Human;
+use App\Services\ShareTreeLinkService;
 
 class RodovoeDrevoController extends Controller
 {
+    public function __construct(
+       protected ShareTreeLinkService $shareTreeLinkService
+    )
+    {}
+
     public function index(Human $human)
     {
         $humans = Human::all();
@@ -18,6 +24,9 @@ class RodovoeDrevoController extends Controller
             'fatherGrandmother' => $human->father ? $humans->find($human->father->id)->mother : null,
             'motherGrandfather' => $human->mother ? $humans->find($human->mother->id)->father : null,
             'motherGrandmother' => $human->mother ? $humans->find($human->mother->id)->mother : null,
+
+            'shareTreeLink' => $this->shareTreeLinkService->make($human) ? $this->shareTreeLinkService->make($human) : null,
+
         ]);
     }
 }

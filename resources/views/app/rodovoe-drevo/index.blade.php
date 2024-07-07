@@ -5,7 +5,31 @@
 @section('content')
     <link rel="stylesheet" href="{{ asset('app/css/tree.css') }}">
 
+    @include('app.rodovoe-drevo.script-copy-link')
+
     <div class="container container-tree">
+
+        <div class="row justify-content-center">
+            <div class="col">
+                @auth()
+
+                    <div class="row justify-content-center pt-4">
+                        <div class="position-absolute notif" id="liveAlertPlaceholder"></div>
+                    </div>
+
+                    <div class="copyLink">
+                        <button id="copyButton" class="btn btn-outline-success float-end">
+                            <i class="bi bi-copy"></i>
+                        </button>
+                        <div class="mt-3">
+                            <input type="text" hidden="hidden" id="copyText" class="form-control"
+                                   value="{{ env('APP_URL') }}/rodovoe-drevo/{{$human->id}}/{{ $shareTreeLink->link }}"
+                                   readonly>
+                        </div>
+                    </div>
+                @endauth
+            </div>
+        </div>
 
         <div class="row">
             <div class="col">
