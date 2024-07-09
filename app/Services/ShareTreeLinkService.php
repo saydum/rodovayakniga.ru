@@ -12,9 +12,9 @@ class ShareTreeLinkService
      * Check if the link exists, if not then calls the method save()
      *
      * @param Human $human
-     * @return ShareTreeLink
+     * @return ShareTreeLink|null
      */
-    public function make(Human $human): ShareTreeLink
+    public function make(Human $human): ShareTreeLink|null
     {
         if ($human->shareTreeLink === null) {
             $this->save($human);

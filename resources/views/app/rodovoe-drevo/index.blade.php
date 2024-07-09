@@ -21,11 +21,13 @@
                         <button id="copyButton" class="btn btn-outline-success float-end">
                             <i class="bi bi-copy"></i>
                         </button>
-                        <div class="mt-3">
-                            <input type="text" hidden="hidden" id="copyText" class="form-control"
-                                   value="{{ env('APP_URL') }}/rodovoe-drevo/{{$human->id}}/{{ $shareTreeLink->link }}"
-                                   readonly>
-                        </div>
+                        @isset($shareTreeLink->link)
+                            <div class="mt-3">
+                                <input type="text" hidden="hidden" id="copyText" class="form-control"
+                                       value="{{ env('APP_URL') }}/rodovoe-drevo/{{$human->id}}/{{ $shareTreeLink->link }}"
+                                       readonly>
+                            </div>
+                        @endisset
                     </div>
                 @endauth
             </div>
