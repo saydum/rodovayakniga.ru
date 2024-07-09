@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\app;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Human\CreateHumanRequest;
+use App\Http\Requests\Human\UpdateHumanRequest;
 use App\Models\Human;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\Human\UpdateHumanRequest;
-use App\Http\Requests\Human\CreateHumanRequest;
 
 class HumanController extends Controller
 {
