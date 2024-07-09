@@ -13,4 +13,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('humans', HumanController::class);
 
 Route::get('/rodovoe-drevo/{human}', [RodovoeDrevoController::class, 'index'])->name('rodovoe-drevo.index');
-Route::get('/rodovoe-drevo/{human}/{link}', [RodovoeDrevoController::class, 'index'])->name('rodovoe-drevo.index');
+Route::get('/rodovoe-drevo/{human}/{link}', [RodovoeDrevoController::class, 'index'])->name('rodovoe-drevo.link');
