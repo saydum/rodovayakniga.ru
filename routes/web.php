@@ -1,14 +1,17 @@
 <?php
 
-use App\Http\Controllers\HumanController;
-use App\Http\Controllers\RodovoeDrevoController;
+use App\Http\Controllers\app\HomeController;
+use App\Http\Controllers\app\HumanController;
+use App\Http\Controllers\app\RodovoeDrevoController;
+use App\Http\Controllers\web\WebController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [WebController::class, 'index'])->name('web.index');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::resource('humans', HumanController::class);
 
