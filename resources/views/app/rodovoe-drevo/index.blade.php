@@ -49,7 +49,7 @@
                                         data-mdb-target="#show-info-modal"
                                     >
                                         <img class="img-fluid" src="{{ asset($human->image) }}">
-                                        <p class=""> {{ $human->name. " " .  $human->o_name . " " . $human->f_name}}</p>
+                                        <p class=""> {{ $human->name. " " .  $human->last_name . " " . $human->surname}}</p>
                                     </a>
                                 </div>
                                 {{-- E1--}}
@@ -64,7 +64,7 @@
                                                     data-mdb-target="#show-info-modal"
                                                 >
                                                     <img class="img-fluid" src="{{ asset($father->image) }}">
-                                                    <p>{{ $father->name . " " . $father->o_name . " " . $father->f_name }}</p>
+                                                    <p>{{ $father->name . " " . $father->last_name . " " . $father->surname }}</p>
                                                 </a>
                                             </div>
                                             <ul class="tree_ul">
@@ -79,7 +79,7 @@
                                                             >
                                                                 <img class="img-fluid"
                                                                      src="{{ asset($fatherGrandfather->image) }}"/>
-                                                                <p>{{ $fatherGrandfather->name . " " . $fatherGrandfather->o_name . " " . $fatherGrandfather->f_name }}</p>
+                                                                <p>{{ $fatherGrandfather->name . " " . $fatherGrandfather->last_name . " " . $fatherGrandfather->surname }}</p>
 
                                                             </a>
                                                         </div>
@@ -96,7 +96,7 @@
                                                             >
                                                                 <img class="img-fluid"
                                                                      src="{{ asset($fatherGrandmother->image) }}">
-                                                                <p>{{ $fatherGrandmother->name . " " . $fatherGrandmother->o_name . " " . $fatherGrandmother->f_name }}</p>
+                                                                <p>{{ $fatherGrandmother->name . " " . $fatherGrandmother->last_name . " " . $fatherGrandmother->surname }}</p>
                                                             </a>
                                                         </div>
                                                     </li>
@@ -115,7 +115,7 @@
                                                     data-mdb-target="#show-info-modal"
                                                 >
                                                     <img class="img-fluid" src="{{ asset($mother->image) }}">
-                                                    <p>{{ $mother->name . " " . $mother->o_name . " " . $mother->f_name }}</p>
+                                                    <p>{{ $mother->name . " " . $mother->last_name . " " . $mother->surname }}</p>
                                                 </a>
                                             </div>
                                             <ul class="tree_ul">
@@ -130,7 +130,7 @@
                                                             >
                                                                 <img class="img-fluid"
                                                                      src="{{ asset($motherGrandfather->image) }}">
-                                                                <p>{{ $motherGrandfather->name . " " . $motherGrandfather->o_name . " " . $motherGrandfather->f_name }}</p>
+                                                                <p>{{ $motherGrandfather->name . " " . $motherGrandfather->last_name . " " . $motherGrandfather->surname }}</p>
 
                                                             </a>
                                                         </div>
@@ -147,7 +147,7 @@
                                                             >
                                                                 <img class="img-fluid"
                                                                      src="{{ asset($motherGrandmother->image) }}">
-                                                                <p>{{ $motherGrandmother->name . " " . $motherGrandmother->o_name . " " . $motherGrandmother->f_name }}</p>
+                                                                <p>{{ $motherGrandmother->name . " " . $motherGrandmother->last_name . " " . $motherGrandmother->surname }}</p>
                                                             </a>
                                                         </div>
                                                     </li>

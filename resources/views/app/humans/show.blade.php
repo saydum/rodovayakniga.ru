@@ -14,7 +14,7 @@
                     >
                 </div>
                 <h3 class="profile-username text-center">
-                    {{ $human->name . $human->last_name . $human->surname }}
+                    {{ $human->name .' '. $human->last_name .' '. $human->surname }}
                 </h3>
 
                 <div class="row">
