@@ -18,6 +18,12 @@
                 <div class="row">
                     <x-input type="file" name="image" title="Фото" />
                 </div>
+                <div class="row">
+                    <div class="col pb-3">
+                        <label for="biography" class="form-label">Биография</label>
+                        <textarea id="biography" name="biography" class="form-control pb-1">{{{ old('biography') }}}</textarea>
+                    </div>
+                </div>
                 <button class="btn btn-success" type="submit">Добавить</button>
             </form>
         </div>
