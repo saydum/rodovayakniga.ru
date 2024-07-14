@@ -19,7 +19,8 @@ class HumanController extends Controller
 
     public function create(): View
     {
-        return view('app.humans.create');
+        $humans = Human::all();
+        return view('app.humans.create', compact('humans'));
     }
 
     public function store(CreateHumanRequest $request): RedirectResponse
@@ -42,7 +43,8 @@ class HumanController extends Controller
 
     public function edit(Human $human): View
     {
-        return view('app.humans.edit', compact('human'));
+        $humans = Human::all();
+        return view('app.humans.edit', compact('human', 'humans'));
     }
 
     public function update(UpdateHumanRequest $request, Human $human): RedirectResponse
