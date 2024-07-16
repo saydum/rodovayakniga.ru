@@ -8,6 +8,9 @@
             <form action="{{ route('humans.update', $human->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+
+                <input name="user_id" hidden="hidden" value="{{ auth()->user()->id }}">
+
                 <div class="row">
                     <x-input type="text" name="name" title="Имя" placeholder="Ведите имя" value="{{ $human->name }}"/>
                     <x-input type="text" name="last_name" title="Отчество" placeholder="Ведите отчество"

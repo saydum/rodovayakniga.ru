@@ -30,6 +30,7 @@ class UpdateHumanRequest extends FormRequest
             'mother_id' => ['nullable', 'integer', 'exists:humans,id'],
             'father_id' => ['nullable', 'integer', 'exists:humans,id'],
             'biography' => ['nullable', 'string'],
+            'user_id' => ['nullable', 'integer', 'exists:users,id'],
         ];
     }
 }
