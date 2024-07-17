@@ -41,7 +41,11 @@
                                 <td>{{ $human->name }}</td>
                                 <td>{{ $human->last_name }}</td>
                                 <td>{{ $human->surname }}</td>
-                                <td>{{ date('d.m.Y', strtotime($human->birth_date))}}</td>
+                                <td>
+                                    @isset($human->birth_date)
+                                        {{ date('d.m.Y', strtotime($human->birth_date))}}
+                                    @endisset
+                                </td>
                                 <td>
                                     <a class="btn btn-success" href="{{ route('humans.show', $human->id) }}">
                                         <i class="bi bi-eye"></i>
@@ -49,7 +53,8 @@
                                     <a class="btn btn-primary" href="{{ route('humans.edit', $human->id) }}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <a class="btn btn-outline-success" href="{{ route('rodovoe-drevo.index', $human->id) }}">
+                                    <a class="btn btn-outline-success"
+                                       href="{{ route('rodovoe-drevo.index', $human->id) }}">
                                         <i class="bi bi-arrows-fullscreen"></i>
                                     </a>
                                 </td>
