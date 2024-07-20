@@ -5,20 +5,25 @@
 @section('content')
     <div class="card card-success card-outline">
         <div class="card-body">
+
+            <x-forms.alert.errors/>
+
             <form action="{{ route('humans.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <input name="user_id" hidden="hidden" value="{{ auth()->user()->id }}">
 
                 <div class="row">
-`                    <x-input type="text" name="name" title="Имя" placeholder="Ведите имя" value="{{ old('name') }}"/>
+                    <x-input type="text" name="name" title="Имя" placeholder="Ведите имя"
+                                   value="{{ old('name') }}"/>
                     <x-input type="text" name="last_name" title="Отчество" placeholder="Ведите отчество"
-                             value="{{ old('last_name') }}"/>
+                                   value="{{ old('last_name') }}"/>
                     <x-input type="text" name="surname" title="Фамилия" placeholder="Ведите фамилию"
-                             value="{{ old('surname') }}"/>
+                                   value="{{ old('surname') }}"/>
                 </div>
                 <div class="row">
-                    <x-input type="date" name="birth_date" title="Дата рождения" placeholder="Ведите дату рождения" />
+                    <x-input type="date" name="birth_date" title="Дата рождения"
+                                   placeholder="Ведите дату рождения"/>
                 </div>
 
                 <div class="row">
