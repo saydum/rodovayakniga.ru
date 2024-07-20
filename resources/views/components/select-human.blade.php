@@ -3,10 +3,7 @@
         <label class="pb-1">{{ $title }}</label>
         <select name="{{ $inputName }}" class="form-control select2 select2-hidden-accessible" style="width: 100%;"
                 data-select2-id="1" tabindex="-1" aria-hidden="true">
-            <option
-                selected="selected"
-                data-select2-id="0"
-            >
+            <option value="{{ null }}">
                 Не выбран
             </option>
 
