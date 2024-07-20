@@ -9,17 +9,6 @@
                 <div class="card-header">
 
                     <a href="{{ route('humans.create') }}" class="btn btn-success">Добавить</a>
-
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm">
-                            <input type="text" name="table_search" class="form-control" placeholder="Search">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="bi bi-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="card-body table-responsive p-0">
