@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('web/css/citata.css') }}">
     <link rel="stylesheet" href="{{ asset('web/css/responsive.css') }}">
 
+    <meta name="yandex-verification" content="0d26f8813ed665ce" />
+
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function(m, e, t, r, i, k, a) {
