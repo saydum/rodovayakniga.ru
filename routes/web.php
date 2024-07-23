@@ -10,9 +10,17 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::resource('humans', HumanController::class);
-    Route::get('/rodovoe-drevo/{human}', [RodovoeDrevoController::class, 'index'])->name('rodovoe-drevo.index');
-    Route::get('/rodovoe-drevo/{human}/{link}', [RodovoeDrevoController::class, 'index'])->name('rodovoe-drevo.link');
+
+    Route::resource('humans', HumanController::class)
+        ->middleware('check.access.human.data');
+
+    Route::get('/rodovoe-drevo/{human}', [RodovoeDrevoController::class, 'index'])
+        ->name('rodovoe-drevo.index')
+        ->middleware('check.access.human.data');
+
+    Route::get('/rodovoe-drevo/{human}/{link}', [RodovoeDrevoController::class, 'index'])
+        ->name('rodovoe-drevo.link')
+        ->middleware('check.access.human.data');
 });
 
 Auth::routes();
