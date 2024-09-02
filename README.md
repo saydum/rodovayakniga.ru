@@ -30,7 +30,7 @@
 ```bash
 # Клонируем проект
 git clone https://github.com/saydum/rodovayakniga.ru-app.git
-cd rodovayakniga.ru-app
+cd rodovayakniga.ru-App
 
 # Запускаем установку зависимостей
 composer install

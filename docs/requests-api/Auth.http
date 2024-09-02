@@ -1,0 +1,26 @@
+### Регистрация нового пользователя
+POST http://127.0.0.1:8000/api/register
+Content-Type: application/json
+
+{
+    "name": "admin",
+    "email": "admin@example.com",
+    "password": "password"
+}
+
+###
+
+### Вход пользователя
+POST http://127.0.0.1:8000/api/login
+Content-Type: application/json
+
+{
+    "email": "admin@example.com",
+    "password": "password"
+}
+
+###
+
+### Выход пользователя
+POST http://127.0.0.1:8000/api/logout
+Authorization: Bearer {{access_token}}

@@ -10,15 +10,15 @@
 
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="{{ asset('web/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Web/css/bootstrap.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('web/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('web/css/owl.carousel.css') }}">
-    <link rel="stylesheet" href="{{ asset('web/css/animate.css') }}">
-    <link rel="stylesheet" href="{{ asset('web/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('Web/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Web/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('Web/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('Web/css/main.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('web/css/citata.css') }}">
-    <link rel="stylesheet" href="{{ asset('web/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('Web/css/citata.css') }}">
+    <link rel="stylesheet" href="{{ asset('Web/css/responsive.css') }}">
 
     <meta name="yandex-verification" content="0d26f8813ed665ce" />
 
@@ -81,13 +81,13 @@
                     rodovayakniga.ru
                     {{--                <img --}}
                     {{--                        class="logo-1" --}}
-                    {{--                        src="{{ asset('web/images/logo/vector/default-monochrome.svg') }}" --}}
+                    {{--                        src="{{ asset('Web/images/logo/vector/default-monochrome.svg') }}" --}}
                     {{--                        alt="LOGO" --}}
                     {{--                        height="87px" --}}
                     {{--                        width="100px" /> --}}
                     {{--                <img --}}
                     {{--                        class="logo-2" --}}
-                    {{--                        src="{{ asset('web/images/logo/vector/default-monochrome.svg') }}" --}}
+                    {{--                        src="{{ asset('Web/images/logo/vector/default-monochrome.svg') }}" --}}
                     {{--                        alt="LOGO" --}}
                     {{--                        height="87px" --}}
                     {{--                        width="100px" /> --}}
@@ -150,18 +150,18 @@
 
 
     <!-- Js -->
-    <script src="{{ asset('web/js/vendor/modernizr-2.6.2.min.js') }}"></script>
-    <script src="{{ asset('web/js/vendor/jquery-1.10.2.min.js') }}"></script>
-    <script src="{{ asset('web/js/jquery.lwtCountdown-1.0.js') }}"></script>
-    <script src="{{ asset('web/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('web/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('web/js/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('web/js/jquery.form.js') }}"></script>
-    <script src="{{ asset('web/js/jquery.nav.js') }}"></script>
-    <script src="{{ asset('web/js/jquery.sticky.js') }}"></script>
-    <script src="{{ asset('web/js/plugins.js') }}"></script>
-    <script src="{{ asset('web/js/wow.min.js') }}"></script>
-    <script src="{{ asset('web/js/main.js') }}"></script>
+    <script src="{{ asset('Web/js/vendor/modernizr-2.6.2.min.js') }}"></script>
+    <script src="{{ asset('Web/js/vendor/jquery-1.10.2.min.js') }}"></script>
+    <script src="{{ asset('Web/js/jquery.lwtCountdown-1.0.js') }}"></script>
+    <script src="{{ asset('Web/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('Web/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('Web/js/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('Web/js/jquery.form.js') }}"></script>
+    <script src="{{ asset('Web/js/jquery.nav.js') }}"></script>
+    <script src="{{ asset('Web/js/jquery.sticky.js') }}"></script>
+    <script src="{{ asset('Web/js/plugins.js') }}"></script>
+    <script src="{{ asset('Web/js/wow.min.js') }}"></script>
+    <script src="{{ asset('Web/js/main.js') }}"></script>
 
 </body>
 

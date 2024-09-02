@@ -7,16 +7,16 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('App.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/App.scss', 'resources/js/App.js'])
 </head>
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-md  shadow-sm" data-bs-theme="dark">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('web.index') }}">
+            <a class="navbar-brand" href="{{ route('Web.index') }}">
                 rodovayakniga.ru
             </a>
 

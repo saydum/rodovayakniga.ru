@@ -98,7 +98,7 @@
      * ------------------------------------------------------------------------
      */
     const CLASS_NAME_HOLD_TRANSITIONS = 'hold-transition';
-    const CLASS_NAME_APP_LOADED = 'app-loaded';
+    const CLASS_NAME_APP_LOADED = 'App-loaded';
     /**
      * Class Definition
      * ====================================================
@@ -148,11 +148,11 @@
     const CLASS_NAME_SIDEBAR_EXPAND = 'sidebar-expand';
     const CLASS_NAME_SIDEBAR_OVERLAY = 'sidebar-overlay';
     const CLASS_NAME_MENU_OPEN$1 = 'menu-open';
-    const SELECTOR_APP_SIDEBAR = '.app-sidebar';
+    const SELECTOR_APP_SIDEBAR = '.App-sidebar';
     const SELECTOR_SIDEBAR_MENU = '.sidebar-menu';
     const SELECTOR_NAV_ITEM$1 = '.nav-item';
     const SELECTOR_NAV_TREEVIEW = '.nav-treeview';
-    const SELECTOR_APP_WRAPPER = '.app-wrapper';
+    const SELECTOR_APP_WRAPPER = '.App-wrapper';
     const SELECTOR_SIDEBAR_EXPAND = `[class*="${CLASS_NAME_SIDEBAR_EXPAND}"]`;
     const SELECTOR_SIDEBAR_TOGGLE = '[data-lte-toggle="sidebar"]';
     const Defaults = {
