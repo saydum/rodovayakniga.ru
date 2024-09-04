@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\app;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Human;
 use App\Services\ShareTreeLinkService;
 

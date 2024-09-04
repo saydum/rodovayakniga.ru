@@ -22,7 +22,7 @@
                 <div class="col-md-6 wow zoomIn">
                     <div class="block">
                         <div class="counter">
-                            <img src="{{ asset('Web/images/family.jpg') }}" alt="" class="img-thumbnail">
+                            <img src="{{ asset('web/images/family.jpg') }}" alt="" class="img-thumbnail">
                             {{--                        <p>--}}
                             {{--                            Изображение от <a href="https://ru.freepik.com/free-photo/close-up-smiley-people-posing-together_16688975.htm#query=family&from_query=famaly&position=20&from_view=search&track=sph">Freepik</a>--}}
                             {{--                        </p>--}}

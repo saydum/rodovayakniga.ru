@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\app;
+namespace App\Http\Controllers;
 
-use App\Traits\UploadFile;
-use App\Models\Human;
-use Illuminate\Contracts\View\View;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Human\CreateHumanRequest;
 use App\Http\Requests\Human\UpdateHumanRequest;
+use App\Models\Human;
+use App\Traits\UploadFile;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class HumanController extends Controller
 {

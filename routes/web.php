@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\app\HomeController;
-use App\Http\Controllers\app\HumanController;
-use App\Http\Controllers\app\RodovoeDrevoController;
-use App\Http\Controllers\web\WebController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HumanController;
+use App\Http\Controllers\RodovoeDrevoController;
+use App\Http\Controllers\Web\WebController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
