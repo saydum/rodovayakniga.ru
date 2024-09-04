@@ -16,13 +16,13 @@ class HumanController extends Controller
     public function index(): View
     {
         $humans = auth()->user()->humans;
-        return view('App.humans.index', compact('humans'));
+        return view('app.humans.index', compact('humans'));
     }
 
     public function create(): View
     {
         $humans = auth()->user()->humans;
-        return view('App.humans.create', compact('humans'));
+        return view('app.humans.create', compact('humans'));
     }
 
     public function store(CreateHumanRequest $request): RedirectResponse
@@ -34,13 +34,13 @@ class HumanController extends Controller
 
     public function show(Human $human): View
     {
-        return view('App.humans.show', compact('human'));
+        return view('app.humans.show', compact('human'));
     }
 
     public function edit(Human $human): View
     {
         $humans = auth()->user()->humans;
-        return view('App.humans.edit', compact('human', 'humans'));
+        return view('app.humans.edit', compact('human', 'humans'));
     }
 
     public function update(UpdateHumanRequest $request, Human $human): RedirectResponse

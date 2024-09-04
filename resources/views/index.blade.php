@@ -7,9 +7,9 @@
     <meta name="description" content="Free bootstrap template Atlas">
 {{--    <link rel="icon" href="img/favicon.png" sizes="32x32" type="image/png">--}}
     <!-- custom.css -->
-    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('web/css/custom.css') }}">
     <!-- bootstrap.min.css -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('web/css/bootstrap.min.css') }}">
     <!-- font-awesome -->
 {{--    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">--}}
 

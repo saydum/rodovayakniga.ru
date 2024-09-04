@@ -16,7 +16,7 @@ class RodovoeDrevoController extends Controller
     {
         $humans = Human::all();
 
-        return view('App.rodovoe-drevo.index', [
+        return view('app.rodovoe-drevo.index', [
             'human' => $human,
             'father' => $human->father ?? null,
             'mother' => $human->mother ?? null,
