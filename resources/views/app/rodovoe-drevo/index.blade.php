@@ -3,7 +3,7 @@
 @section('title', 'РОДовое Древо' . $human->name)
 
 @section('content')
-    <link rel="stylesheet" href="{{ asset('App/css/tree.css') }}">
+    <link rel="stylesheet" href="{{ asset('app/css/tree.css') }}">
 
     @include('app.rodovoe-drevo.script-copy-link')
 

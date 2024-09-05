@@ -25,6 +25,6 @@ Route::middleware(['auth'])->group(function () {
 
 Auth::routes();
 
-Route::get('/', [WebController::class, 'index'])->name('Web.index');
+Route::get('/', [WebController::class, 'index'])->name('web.index');
 Route::get('/rodovoe-drevo/{human}/{link}', [RodovoeDrevoController::class, 'index'])
     ->name('rodovoe-drevo.link');
