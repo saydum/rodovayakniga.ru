@@ -1,18 +1,17 @@
 @extends('layouts.app.layout')
 
-@section('title', 'РОДовое Древо' . $human->name)
+@section('title', 'РОДовое Древо' . ($human->name ?? ''))
 
 @section('content')
-    <link rel="stylesheet" href="{{ asset('app/css/tree.css') }}">
+    <link rel="stylesheet" href="{{ asset('application/css/tree.css') }}">
 
-    @include('app.rodovoe-drevo.script-copy-link')
+    @include('application.rodovoe-drevo.script-copy-link')
 
     <div class="container container-tree">
 
         <div class="row justify-content-center">
             <div class="col">
                 @auth()
-
                     <div class="row justify-content-center pt-4">
                         <div class="position-absolute notif" id="liveAlertPlaceholder"></div>
                     </div>
@@ -162,5 +161,13 @@
                 </div>
             </div>
         </div>
+
+        @if(empty($human))
+            <div class="row justify-content-center">
+                <div class="col-md-6 offset-md-3 py-5">
+                    <button class="btn btn-success">Добавить человека</button>
+                </div>
+            </div>
+        @endif
     </div>
 @endsection

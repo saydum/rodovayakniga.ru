@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css"
           integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous">
     <!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="{{ asset('app/css/adminlte.css') }}"><!--end::Required Plugin(AdminLTE)-->
+    <link rel="stylesheet" href="{{ asset('application/css/adminlte.css') }}"><!--end::Required Plugin(AdminLTE)-->
     <!-- apexcharts -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
           integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous"><!-- jsvectormap -->
@@ -30,7 +30,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
-<body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::app Wrapper-->
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::application Wrapper-->
 <div class="app-wrapper"> <!--begin::Header-->
     <nav class="app-header navbar navbar-expand bg-body"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Start Navbar Links-->
@@ -94,8 +94,8 @@
                 </ul> <!--end::Sidebar Menu-->
             </nav>
         </div> <!--end::Sidebar Wrapper-->
-    </aside> <!--end::Sidebar--> <!--begin::app Main-->
-    <main class="app-main"> <!--begin::app Content Header-->
+    </aside> <!--end::Sidebar--> <!--begin::application Main-->
+    <main class="app-main"> <!--begin::application Content Header-->
         <div class="app-content-header"> <!--begin::Container-->
             <div class="container-fluid"> <!--begin::Row-->
                 <div class="row">
@@ -105,13 +105,13 @@
 
                 </div> <!--end::Row-->
             </div> <!--end::Container-->
-        </div> <!--end::app Content Header--> <!--begin::app Content-->
+        </div> <!--end::application Content Header--> <!--begin::application Content-->
         <div class="app-content"> <!--begin::Container-->
             <div class="container-fluid"> <!--begin::Row-->
                 @yield('content')
             </div> <!--end::Container-->
-        </div> <!--end::app Content-->
-    </main> <!--end::app Main--> <!--begin::Footer-->
+        </div> <!--end::application Content-->
+    </main> <!--end::application Main--> <!--begin::Footer-->
     <footer class="app-footer"> <!--begin::To the end-->
         <div class="float-end d-none d-sm-inline">Anything you want</div> <!--end::To the end--> <!--begin::Copyright-->
         <strong>
@@ -121,7 +121,7 @@
         All rights reserved.
         <!--end::Copyright-->
     </footer> <!--end::Footer-->
-</div> <!--end::app Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
+</div> <!--end::application Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js"
         integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script>
 <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
@@ -131,7 +131,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script>
 <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-<script src="{{ asset('app/js/adminlte.js') }}"></script> <!--end::Required Plugin(AdminLTE)-->
+<script src="{{ asset('application/js/adminlte.js') }}"></script> <!--end::Required Plugin(AdminLTE)-->
 <!--begin::OverlayScrollbars Configure-->
 <script>
     const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";

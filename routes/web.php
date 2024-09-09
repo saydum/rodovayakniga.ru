@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HumanController;
 use App\Http\Controllers\RodovoeDrevoController;
 use App\Http\Controllers\Web\WebController;
@@ -9,13 +8,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-    Route::resource('humans', HumanController::class)
+    Route::get('/app', [RodovoeDrevoController::class, 'index'])
+        ->name('app')
         ->middleware('check.access.human.data');
 
-    Route::get('/rodovoe-drevo', [RodovoeDrevoController::class, 'index'])
-        ->name('rodovoe-drevo')
+    Route::resource('humans', HumanController::class)
         ->middleware('check.access.human.data');
 
     Route::get('/rodovoe-drevo/{human}', [RodovoeDrevoController::class, 'index'])

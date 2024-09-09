@@ -12,21 +12,35 @@ class RodovoeDrevoController extends Controller
     )
     {}
 
-    public function index(Human $human)
+    public function index(Human $human = null)
     {
         $humans = Human::all();
 
-        return view('app.rodovoe-drevo.index', [
+        if ($human === null) $human = $humans->first();
+
+        // Получаем родителей
+        $father = $human?->father;
+        $mother = $human?->mother;
+
+        // Получаем дедушек и бабушек по линии отца и матери
+        $fatherGrandfather = $father?->father;
+        $fatherGrandmother = $father?->mother;
+        $motherGrandfather = $mother?->father;
+        $motherGrandmother = $mother?->mother;
+
+        // Генерация ссылки на дерево
+        $shareTreeLink = $this->shareTreeLinkService->make($human);
+
+        return view('application.rodovoe-drevo.index', [
             'human' => $human,
-            'father' => $human->father ?? null,
-            'mother' => $human->mother ?? null,
-            'fatherGrandfather' => $human->father ? $humans->find($human->father->id)->father : null,
-            'fatherGrandmother' => $human->father ? $humans->find($human->father->id)->mother : null,
-            'motherGrandfather' => $human->mother ? $humans->find($human->mother->id)->father : null,
-            'motherGrandmother' => $human->mother ? $humans->find($human->mother->id)->mother : null,
-
-            'shareTreeLink' => $this->shareTreeLinkService->make($human) ? $this->shareTreeLinkService->make($human) : null,
-
+            'father' => $father,
+            'mother' => $mother,
+            'fatherGrandfather' => $fatherGrandfather,
+            'fatherGrandmother' => $fatherGrandmother,
+            'motherGrandfather' => $motherGrandfather,
+            'motherGrandmother' => $motherGrandmother,
+            'shareTreeLink' => $shareTreeLink,
         ]);
     }
+
 }

@@ -16,9 +16,7 @@ class ShareTreeLinkService
      */
     public function make(Human $human): ShareTreeLink|null
     {
-        if ($human->shareTreeLink === null) {
-            $this->save($human);
-        }
+        if ($human->shareTreeLink === null) $this->save($human);
         return $human->shareTreeLink;
     }
 
