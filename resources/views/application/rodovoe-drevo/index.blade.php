@@ -162,7 +162,7 @@
             </div>
         </div>
 
-        @if(empty($human))
+        @if(!$human)
             <div class="row justify-content-center">
                 <div class="col-md-6 offset-md-3 py-5">
                     <button class="btn btn-success">Добавить человека</button>

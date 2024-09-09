@@ -15,8 +15,12 @@ class RodovoeDrevoController extends Controller
     public function index(Human $human = null)
     {
         $humans = Human::all();
+        $shareTreeLink = "";
 
-        if ($human === null) $human = $humans->first();
+        if ($human === null && count($humans) !== 0) {
+            $human = $humans->first();
+            $shareTreeLink = $this->shareTreeLinkService->make($human);
+        }
 
         // Получаем родителей
         $father = $human?->father;
@@ -28,8 +32,7 @@ class RodovoeDrevoController extends Controller
         $motherGrandfather = $mother?->father;
         $motherGrandmother = $mother?->mother;
 
-        // Генерация ссылки на дерево
-        $shareTreeLink = $this->shareTreeLinkService->make($human);
+
 
         return view('application.rodovoe-drevo.index', [
             'human' => $human,
