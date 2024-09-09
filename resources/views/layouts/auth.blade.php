@@ -16,7 +16,7 @@
 <div id="app">
     <nav class="navbar navbar-expand-md  shadow-sm" data-bs-theme="dark">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('Web.index') }}">
+            <a class="navbar-brand" href="{{ route('web.index') }}">
                 rodovayakniga.ru
             </a>
 

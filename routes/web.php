@@ -14,6 +14,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('humans', HumanController::class)
         ->middleware('check.access.human.data');
 
+    Route::get('/rodovoe-drevo', [RodovoeDrevoController::class, 'index'])
+        ->name('rodovoe-drevo')
+        ->middleware('check.access.human.data');
+
     Route::get('/rodovoe-drevo/{human}', [RodovoeDrevoController::class, 'index'])
         ->name('rodovoe-drevo.index')
         ->middleware('check.access.human.data');
