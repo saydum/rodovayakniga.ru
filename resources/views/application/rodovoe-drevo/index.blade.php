@@ -1,6 +1,6 @@
 @extends('layouts.app.layout')
 
-@section('title', 'РОДовое Древо' . ($human->name ?? ''))
+@section('title', 'РОДовое Древо: ' . ($human->name ?? ''))
 
 @section('content')
     <link rel="stylesheet" href="{{ asset('application/css/tree.css') }}">
