@@ -29,8 +29,8 @@
 # 2.2 Установка и запуск
 ```bash
 # Клонируем проект
-git clone https://github.com/saydum/rodovayakniga.ru-app.git
-cd rodovayakniga.ru-App
+git clone https://github.com/saydum/rodovayakniga.ru.git
+cd rodovayakniga.ru
 
 # Запускаем установку зависимостей
 composer install
@@ -40,5 +40,11 @@ npm i
 php artisan serve
 ```
 
-# 3. Example
-![](./static/drevo.png)
+# 3. Примеры
+
+| App                   | Index                 |
+|-----------------------|-----------------------|
+| ![](static/drevo.png) | ![](static/index.png) | 
+|                       |                       |
+
+
