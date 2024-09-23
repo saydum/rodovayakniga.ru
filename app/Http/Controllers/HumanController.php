@@ -29,7 +29,7 @@ class HumanController extends Controller
     {
         $input = $this->uploadImage($request);
         Human::create($input);
-        return redirect()->route('humans.index')->with('success', 'Human has been created.');
+        return redirect()->route('app')->with('success', 'Human has been created.');
     }
 
     public function show(Human $human): View

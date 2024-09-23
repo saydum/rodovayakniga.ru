@@ -4,34 +4,49 @@
 
 @section('content')
     <link rel="stylesheet" href="{{ asset('application/css/tree.css') }}">
-
     @include('application.rodovoe-drevo.script-copy-link')
 
-    <div class="container container-tree">
-
+    <div class="card-header text-end d-flex justify-content-end" style="margin-top: -30px;">
         <div class="row justify-content-center">
-            <div class="col">
-                @auth()
-                    <div class="row justify-content-center pt-4">
-                        <div class="position-absolute notif" id="liveAlertPlaceholder"></div>
-                    </div>
 
-                    <div class="copyLink">
-                        <button id="copyButton" class="btn btn-outline-success float-end">
+            <div class="col-sm">
+                <a href="{{ route('humans.create') }}" class="btn btn-success">Добавить</a>
+            </div>
+
+            @auth()
+                @if($human)
+                    <div class="col-sm">
+                        <button id="copyButton" class="btn btn-outline-success">
                             <i class="bi bi-copy"></i>
                         </button>
                         @isset($shareTreeLink->link)
-                            <div class="mt-3">
-                                <input type="text" hidden="hidden" id="copyText" class="form-control"
-                                       value="{{ env('APP_URL') }}/rodovoe-drevo/{{$human->id}}/{{ $shareTreeLink->link }}"
-                                       readonly>
-                            </div>
+                            <label for="copyText"></label>
+                            <input
+                                type="text"
+                                hidden="hidden"
+                                id="copyText" class="form-control"
+                                value="{{ env('APP_URL') }}/rodovoe-drevo/{{$human->id}}/{{ $shareTreeLink->link }}"
+                                readonly
+                            >
                         @endisset
                     </div>
-                @endauth
+
+                @endif
+            @endauth
+        </div>
+    </div>
+
+    {{--    Notifacation --}}
+    <div class="container position-absolute">
+        <div class="row">
+            <div class="col">
+                <div class="text-start notif" id="liveAlertPlaceholder"></div>
             </div>
         </div>
+    </div>
 
+
+    <div class="container container-tree">
         <div class="row">
             <div class="col">
 
@@ -163,9 +178,9 @@
         </div>
 
         @if(!$human)
-            <div class="row justify-content-center">
+            <div class="row text-center">
                 <div class="col-md-6 offset-md-3 py-5">
-                    <button class="btn btn-success">Добавить человека</button>
+                    <a href="{{ route('humans.create') }}" class="btn btn-success">Добавить человека</a>
                 </div>
             </div>
         @endif

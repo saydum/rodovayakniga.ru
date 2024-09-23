@@ -120,11 +120,6 @@
     border-color: #94a0b4;
 }
 
-.copyLink {
-    float: right;
-    position: relative;
-}
-
 /* Стили для маленьких экранов (планшеты и мобильные устройства) */
 @media only screen and (max-width: 768px) {
     .container-tree {
@@ -175,5 +170,8 @@
         float: left;
         position: relative;
         padding-top: 15px;
+    }
+    #copyButton {
+        margin-top: 5px;
     }
 }
