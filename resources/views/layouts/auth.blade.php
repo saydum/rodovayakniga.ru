@@ -10,7 +10,7 @@
     <title>{{ config('App.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    @vite(['resources/sass/application.scss', 'resources/js/application.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
 <div id="app">
