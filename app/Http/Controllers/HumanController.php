@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Human\CreateHumanRequest;
 use App\Http\Requests\Human\UpdateHumanRequest;
 use App\Models\Human;
+use App\Services\HumanService;
 use App\Traits\UploadFile;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -13,16 +14,23 @@ class HumanController extends Controller
 {
     use UploadFile;
 
+    public function __construct(
+        protected HumanService $humanService,
+    )
+    {}
+
     public function index(): View
     {
-        $humans = auth()->user()->humans;
-        return view('application.humans.index', compact('humans'));
+        return view('application.humans.index', [
+            'humans' => $this->humanService->getUserHumans()
+        ]);
     }
 
     public function create(): View
     {
-        $humans = auth()->user()->humans;
-        return view('application.humans.create', compact('humans'));
+        return view('application.humans.create', [
+            'humans' => $this->humanService->getUserHumans()
+        ]);
     }
 
     public function store(CreateHumanRequest $request): RedirectResponse
@@ -39,8 +47,10 @@ class HumanController extends Controller
 
     public function edit(Human $human): View
     {
-        $humans = auth()->user()->humans;
-        return view('application.humans.edit', compact('human', 'humans'));
+        return view('application.humans.edit', [
+            'human' => $human,
+            'humans' => $this->humanService->getUserHumans()
+        ]);
     }
 
     public function update(UpdateHumanRequest $request, Human $human): RedirectResponse
