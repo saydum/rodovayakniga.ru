@@ -42,13 +42,15 @@ class HumanController extends Controller
 
     public function show(Human $human): View
     {
-        return view('application.humans.show', compact('human'));
+        return view('application.humans.show', [
+            'human' => $this->humanService->getNotDeleted($human),
+        ]);
     }
 
     public function edit(Human $human): View
     {
         return view('application.humans.edit', [
-            'human' => $human,
+            'human' => $this->humanService->getNotDeleted($human),
             'humans' => $this->humanService->getUserHumans()
         ]);
     }
@@ -62,7 +64,8 @@ class HumanController extends Controller
 
     public function destroy(Human $human): RedirectResponse
     {
-        $human->delete();
+        $human->deleted = true;
+        $human->save();
         return redirect()->route('humans.index')->with('success', 'Human successfully deleted.');
     }
 }
