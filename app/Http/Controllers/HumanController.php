@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Human\CreateHumanRequest;
 use App\Http\Requests\Human\UpdateHumanRequest;
 use App\Models\Human;
-use App\Services\HumanService;
+use App\Services\AuthDataService;
 use App\Traits\UploadFile;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -15,21 +15,23 @@ class HumanController extends Controller
     use UploadFile;
 
     public function __construct(
-        protected HumanService $humanService,
+        protected AuthDataService $authDataService,
+        protected Human $human
     )
-    {}
+    {
+    }
 
     public function index(): View
     {
         return view('application.humans.index', [
-            'humans' => $this->humanService->getUserHumans()
+            'humans' => $this->authDataService->getUserData($this->human)
         ]);
     }
 
     public function create(): View
     {
         return view('application.humans.create', [
-            'humans' => $this->humanService->getUserHumans()
+            'humans' => $this->authDataService->getUserData($this->human)
         ]);
     }
 
@@ -43,15 +45,15 @@ class HumanController extends Controller
     public function show(Human $human): View
     {
         return view('application.humans.show', [
-            'human' => $this->humanService->getNotDeleted($human),
+            'human' => $this->authDataService->getNotDeletedData($human),
         ]);
     }
 
     public function edit(Human $human): View
     {
         return view('application.humans.edit', [
-            'human' => $this->humanService->getNotDeleted($human),
-            'humans' => $this->humanService->getUserHumans()
+            'human' => $this->authDataService->getNotDeletedData($human),
+            'humans' => $this->authDataService->getUserData($this->human)
         ]);
     }
 
