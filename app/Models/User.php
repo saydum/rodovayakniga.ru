@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Human::class);
     }
+
+    public  function rods(): HasMany
+    {
+        return $this->hasMany(Rod::class);
+    }
 }

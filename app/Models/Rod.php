@@ -13,6 +13,7 @@ class Rod extends Model
     protected $fillable = [
         'name',
         'user_id',
+        'deleted',
     ];
 
     public function user(): BelongsTo

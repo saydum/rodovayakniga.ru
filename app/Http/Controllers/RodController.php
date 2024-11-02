@@ -18,8 +18,8 @@ class RodController extends Controller
 
     public function index()
     {
-        return view('rods.index', [
-            'rods' => $this->authDataService->getUserData($this->rod)
+        return view('application.roda.index', [
+            'roda' => $this->authDataService->getUserData($this->rod)
         ]);
     }
 
@@ -33,21 +33,21 @@ class RodController extends Controller
     public function store(RodRequest $request): RedirectResponse
     {
         Rod::create($request->validated());
-        return redirect()->route('app')->with('success', 'Rod has been created.');
+        return redirect()->route('roda.index')->with('success', 'Rod has been created.');
     }
 
     public function show(Rod $rod): View
     {
         return view('application.roda.show', [
-            'rod' => $this->authDataService->getNotDeletedData($this->rod),
+            'rod' => $this->authDataService->getNotDeletedData($rod),
         ]);
     }
 
     public function edit(Rod $rod): View
     {
         return view('application.roda.edit', [
-            'rod' => $this->authDataService->getNotDeletedData($this->rod),
-            'roda' => $this->authDataService->getUserData($this->rod)
+            'rod' => $this->authDataService->getNotDeletedData($rod),
+            'roda' => $this->authDataService->getUserData($rod)
         ]);
     }
 
@@ -59,6 +59,7 @@ class RodController extends Controller
 
     public function destroy(Rod $rod): RedirectResponse
     {
+        // @TODO 19 NOT NULL constraint failed: rods.name
         $rod->deleted = true;
         $rod->save();
         return redirect()->route('roda.index')->with('success', 'Rod successfully deleted.');
