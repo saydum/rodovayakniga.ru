@@ -1,27 +1,26 @@
 <?php
 
 use App\Http\Controllers\HumanController;
+use App\Http\Controllers\RodController;
 use App\Http\Controllers\RodovoeDrevoController;
 use App\Http\Controllers\Web\WebController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'check.access.human.data'])->group(function () {
 
     Route::get('/app', [RodovoeDrevoController::class, 'index'])
-        ->name('app')
-        ->middleware('check.access.human.data');
+        ->name('app');
 
-    Route::resource('humans', HumanController::class)
-        ->middleware('check.access.human.data');
+    Route::resource('roda', RodController::class);
+
+    Route::resource('humans', HumanController::class);
 
     Route::get('/rodovoe-drevo/{human}', [RodovoeDrevoController::class, 'index'])
-        ->name('rodovoe-drevo.index')
-        ->middleware('check.access.human.data');
+        ->name('rodovoe-drevo.index');
 
     Route::get('/rodovoe-drevo/{human}/{link}', [RodovoeDrevoController::class, 'index'])
-        ->name('rodovoe-drevo.link')
-        ->middleware('check.access.human.data');
+        ->name('rodovoe-drevo.link');
 });
 
 Auth::routes();
