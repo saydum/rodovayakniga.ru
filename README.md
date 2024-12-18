@@ -1,9 +1,9 @@
 # 1. Что это?
-[rodovayakniga.ru](https://rodovayakniga.ru/) - Это онлайн-сервис для составления РОДового Древа совместно с РОДственгниками.
+[rodovayakniga.ru](https://rodovayakniga.ru/) - Это онлайн-сервис для составления Родового Древа совместно с Родственников.
 
 ## 1.2 В нашем проекте мы используем
-- Идея из книг Звенящие кедры России (Знания РОДа Анастасии) автор В. Мегре [megre.ru](https://megre.ru/catalog/knigi/)
-- Основная структура составления РОДого Древа [rodipriroda.com/posts/Rodoslovnaja](https://rodipriroda.com/posts/Rodoslovnaja)
+- Идея из книг Звенящие кедры России (Знания Рода Анастасии) автор В. Мегре [megre.ru](https://megre.ru/catalog/knigi/)
+- Основная структура составления Родового Древа [rodipriroda.com/posts/Rodoslovnaja](https://rodipriroda.com/posts/Rodoslovnaja)
 
 
 # 2. Для установки локально
