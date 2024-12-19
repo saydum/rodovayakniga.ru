@@ -22,10 +22,27 @@
                     <x-input type="text" name="surname" title="Фамилия" placeholder="Ведите фамилию"
                                    value="{{ $human->surname }}"/>
                 </div>
+
                 <div class="row">
-                    <x-input type="date" name="birth_date" title="Дата рождения"
-                                   placeholder="Ведите дату рождения"
-                                   value="{{ $human->birth_date }}"/>
+                    <div class="col">
+                        <label for="rod">Род</label>
+                        <select class="form-select" id="rod" aria-label="Род" name="rod_id">
+                            <option selected value="{{ $human->rod_id }}">{{ $human->rod->name }}</option>
+                            @foreach($rods as $rod)
+                                <option value="{{ $rod->id }}">{{ $rod->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <x-input
+                            type="date"
+                            name="birth_date"
+                            title="Дата рождения"
+                            placeholder="Ведите дату рождения"
+                            value="{{ $human->birth_date }}"
+                        />
+                    </div>
                 </div>
 
                 <div class="row">

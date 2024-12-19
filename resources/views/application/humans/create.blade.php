@@ -15,40 +15,54 @@
 
                 <div class="row">
                     <x-input type="text" name="name" title="Имя" placeholder="Ведите имя"
-                                   value="{{ old('name') }}"/>
+                             value="{{ old('name') }}"/>
                     <x-input type="text" name="last_name" title="Отчество" placeholder="Ведите отчество"
-                                   value="{{ old('last_name') }}"/>
+                             value="{{ old('last_name') }}"/>
                     <x-input type="text" name="surname" title="Фамилия" placeholder="Ведите фамилию"
-                                   value="{{ old('surname') }}"/>
-                </div>
-                <div class="row">
-                    <x-input type="date" name="birth_date" title="Дата рождения"
-                                   placeholder="Ведите дату рождения"/>
+                             value="{{ old('surname') }}"/>
                 </div>
 
                 <div class="row">
-                    <div class="row">
-                        <x-select-human
-                            title="Отец"
-                            inputName="father_id"
-                            :value="$human->father->id ?? ''"
-                            :name="$human->father->name ?? ''"
-                            :lastname="$human->father->last_name ?? ''"
-                            :surname="$human->father->surname ?? ''"
-                            :humans="$humans"
+                    <div class="col">
+                        <x-input
+                            type="date"
+                            name="birth_date"
+                            title="Дата рождения"
+                            placeholder="Ведите дату рождения"
                         />
-
-                        <x-select-human
-                            title="Мать"
-                            inputName="mother_id"
-                            :value="$human->mother->id ?? ''"
-                            :name="$human->mother->name ?? ''"
-                            :lastname="$human->mother->last_name ?? ''"
-                            :surname="$human->mother->surname ?? ''"
-                            :humans="$humans"
-                        />
-
                     </div>
+
+                    <div class="col py-4">
+                        <select class="form-select" aria-label="Род" name="rod_id">
+                            <option selected>Выберите свой Род</option>
+                            @foreach($rods as $rod)
+                                <option value="{{ $rod->id }}">{{ $rod->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <x-select-human
+                        title="Отец"
+                        inputName="father_id"
+                        :value="$human->father->id ?? ''"
+                        :name="$human->father->name ?? ''"
+                        :lastname="$human->father->last_name ?? ''"
+                        :surname="$human->father->surname ?? ''"
+                        :humans="$humans"
+                    />
+
+                    <x-select-human
+                        title="Мать"
+                        inputName="mother_id"
+                        :value="$human->mother->id ?? ''"
+                        :name="$human->mother->name ?? ''"
+                        :lastname="$human->mother->last_name ?? ''"
+                        :surname="$human->mother->surname ?? ''"
+                        :humans="$humans"
+                    />
+
                 </div>
 
                 <div class="row">

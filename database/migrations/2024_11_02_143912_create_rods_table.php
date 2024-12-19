@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 255);
             $table->unsignedBigInteger('user_id');
+
             $table->boolean('deleted')->default(false)->comment('Y - yes, N - no');
             $table->timestamps();
         });

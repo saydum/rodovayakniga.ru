@@ -23,12 +23,18 @@ class Human extends Model
         'father_id',
         'biography',
         'user_id',
+        'rod_id',
         'deleted',
     ];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function rod(): BelongsTo
+    {
+        return $this->belongsTo(Rod::class);
     }
 
     public function father(): BelongsTo

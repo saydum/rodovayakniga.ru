@@ -38,8 +38,10 @@ class RodController extends Controller
 
     public function show(Rod $rod): View
     {
+        $rod = $this->authDataService->getNotDeletedData($rod);
         return view('application.roda.show', [
-            'rod' => $this->authDataService->getNotDeletedData($rod),
+            'rod' => $rod,
+            'humans' => $rod->humans,
         ]);
     }
 

@@ -25,6 +25,8 @@ return new class extends Migration
             $table->foreign('mother_id')->references('id')->on('humans')->onDelete('set null');
             $table->foreign('father_id')->references('id')->on('humans')->onDelete('set null');
 
+            $table->unsignedBigInteger('rod_id')->nullable();
+
             $table->timestamps();
         });
     }

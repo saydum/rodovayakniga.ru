@@ -31,6 +31,7 @@ class CreateHumanRequest extends FormRequest
             'father_id' => ['nullable', 'integer', 'exists:humans,id'],
             'biography' => ['nullable', 'string'],
             'user_id' => ['nullable', 'integer', 'exists:users,id'],
+            'rod_id' => 'nullable|integer|exists:rods,id',
         ];
     }
 }

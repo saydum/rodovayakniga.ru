@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Human\CreateHumanRequest;
 use App\Http\Requests\Human\UpdateHumanRequest;
 use App\Models\Human;
+use App\Models\Rod;
 use App\Services\AuthDataService;
 use App\Traits\UploadFile;
 use Illuminate\Contracts\View\View;
@@ -31,7 +32,8 @@ class HumanController extends Controller
     public function create(): View
     {
         return view('application.humans.create', [
-            'humans' => $this->authDataService->getUserData($this->human)
+            'humans' => $this->authDataService->getUserData($this->human),
+            'rods' => $this->authDataService->getUserData(new Rod()),
         ]);
     }
 
@@ -53,7 +55,8 @@ class HumanController extends Controller
     {
         return view('application.humans.edit', [
             'human' => $this->authDataService->getNotDeletedData($human),
-            'humans' => $this->authDataService->getUserData($this->human)
+            'humans' => $this->authDataService->getUserData($this->human),
+            'rods' => $this->authDataService->getUserData(new Rod()),
         ]);
     }
 
