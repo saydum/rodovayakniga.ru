@@ -27,7 +27,7 @@
                     <div class="col">
                         <label for="rod">Род</label>
                         <select class="form-select" id="rod" aria-label="Род" name="rod_id">
-                            <option selected value="{{ $human->rod_id }}">{{ $human->rod->name }}</option>
+                            <option selected value="{{ $human->rod_id }}">{{ $human->rod?->name }}</option>
                             @foreach($rods as $rod)
                                 <option value="{{ $rod->id }}">{{ $rod->name }}</option>
                             @endforeach

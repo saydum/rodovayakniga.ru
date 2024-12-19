@@ -23,6 +23,15 @@
                 </div>
 
                 <div class="row">
+                    <div class="col py-4">
+                        <select class="form-select" aria-label="Род" name="rod_id">
+                            <option value="0" selected>Выберите свой Род</option>
+                            @foreach($rods as $rod)
+                                <option value="{{ $rod->id }}">{{ $rod->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="col">
                         <x-input
                             type="date"
@@ -30,15 +39,6 @@
                             title="Дата рождения"
                             placeholder="Ведите дату рождения"
                         />
-                    </div>
-
-                    <div class="col py-4">
-                        <select class="form-select" aria-label="Род" name="rod_id">
-                            <option selected>Выберите свой Род</option>
-                            @foreach($rods as $rod)
-                                <option value="{{ $rod->id }}">{{ $rod->name }}</option>
-                            @endforeach
-                        </select>
                     </div>
                 </div>
 

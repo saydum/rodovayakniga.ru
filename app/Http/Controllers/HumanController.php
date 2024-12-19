@@ -47,14 +47,14 @@ class HumanController extends Controller
     public function show(Human $human): View
     {
         return view('application.humans.show', [
-            'human' => $this->authDataService->getNotDeletedData($human),
+            'human' => $human,
         ]);
     }
 
     public function edit(Human $human): View
     {
         return view('application.humans.edit', [
-            'human' => $this->authDataService->getNotDeletedData($human),
+            'human' => $human,
             'humans' => $this->authDataService->getUserData($this->human),
             'rods' => $this->authDataService->getUserData(new Rod()),
         ]);
