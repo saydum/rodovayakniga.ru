@@ -61,9 +61,7 @@ class RodController extends Controller
 
     public function destroy(Rod $rod): RedirectResponse
     {
-        // @TODO 19 NOT NULL constraint failed: rods.name
-        $rod->deleted = true;
-        $rod->save();
+        $rod->delete();
         return redirect()->route('roda.index')->with('success', 'Rod successfully deleted.');
     }
 }

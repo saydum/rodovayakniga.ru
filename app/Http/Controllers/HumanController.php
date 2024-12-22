@@ -69,8 +69,7 @@ class HumanController extends Controller
 
     public function destroy(Human $human): RedirectResponse
     {
-        $human->deleted = true;
-        $human->save();
+        $human->delete();
         return redirect()->route('humans.index')->with('success', 'Human successfully deleted.');
     }
 }
