@@ -16,6 +16,9 @@ return Application::configure(basePath: dirname(__DIR__))
             'check.access.human.data' => CheckedAccessHumanData::class,
         ]);
     })
+    ->withCommands([
+        __DIR__.'/../app/Console/Commands/GeneratorMvc',
+    ])
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
