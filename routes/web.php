@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HumanController;
 use App\Http\Controllers\RodController;
+use App\Http\Controllers\RodovayaknigaController;
 use App\Http\Controllers\RodovoeDrevoController;
 use App\Http\Controllers\Web\WebController;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,8 @@ Route::middleware(['auth', 'check.access.human.data'])->group(function () {
     Route::resource('roda', RodController::class);
 
     Route::resource('humans', HumanController::class);
+
+    Route::resource('rodovayaknigas', RodovayaknigaController::class);
 
     Route::get('/rodovoe-drevo/{human}', [RodovoeDrevoController::class, 'index'])
         ->name('rodovoe-drevo.index');

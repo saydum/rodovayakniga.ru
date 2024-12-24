@@ -9,7 +9,7 @@ class AuthDataService
     public function getUserData(mixed $model): Collection
     {
         $tableName = $model->getTable();
-        return auth()->user()->$tableName->where('deleted', false);
+        return auth()->user()->$tableName->get();
     }
 
     public function getNotDeletedData(mixed $model)

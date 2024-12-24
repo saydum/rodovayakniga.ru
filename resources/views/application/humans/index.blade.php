@@ -10,7 +10,7 @@
                     <a href="{{ route('humans.create') }}" class="btn btn-success">Добавить</a>
                 </div>
 
-                <x-table-humans :humans="$humans" />
+                <x-table-humans :humans="$data" />
             </div>
         </div>
     </div>
