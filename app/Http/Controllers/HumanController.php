@@ -2,14 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Human\CreateHumanRequest;
-use App\Http\Requests\Human\UpdateHumanRequest;
 use App\Models\Human;
-use App\Models\Rod;
-use App\Services\AuthDataService;
-use App\Traits\UploadFile;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 
 class HumanController extends CrudController
 {
@@ -22,9 +15,6 @@ class HumanController extends CrudController
             'last_name' => 'Отчество',
             'surname' => 'Фамилия',
             'birth_date' => 'Дата рождения',
-            'image' => 'Фото',
-            'mother_id' => 'Мать',
-            'father_id' => 'Отец',
         ];
     }
 

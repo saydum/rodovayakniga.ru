@@ -22,8 +22,8 @@ abstract class CrudController extends Controller
 
         return view("crud.index", [
             'datas' => $model::all(),
-            'columns' => $model->getColumns(),
-            'route' => $model->getRouteName(),
+            'columns' => $this->getColumns(),
+            'route' => $this->getRouteName(),
         ]);
     }
 
