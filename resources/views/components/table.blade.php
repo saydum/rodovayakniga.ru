@@ -5,7 +5,7 @@
             @foreach($columns as $field => $alias)
                 <th>{{ $alias }}</th>
             @endforeach
-            <th>Действия</th>
+            <th class="text-end">Действия</th>
         </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@
                     </td>
                 @endforeach
                 {{-- Действия --}}
-                <td>
+                <td class="text-end">
                     <a class="btn btn-success" href="{{ route($route . '.show', $item->id) }}">
                         <i class="bi bi-eye"></i>
                     </a>
