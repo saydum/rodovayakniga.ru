@@ -12,14 +12,19 @@ abstract class CrudController extends Controller
     use UploadFile;
 
     protected string $modelClass;
-    protected string $viewPrefix;
+
+    abstract protected function getColumns(): array;
+    abstract protected function getRouteName(): string;
 
     public function index(): View
     {
         $model = app($this->modelClass);
-        $data = $model::all();
 
-        return view("application.{$this->viewPrefix}.index", compact('data'));
+        return view("crud.index", [
+            'datas' => $model::all(),
+            'columns' => $model->getColumns(),
+            'route' => $model->getRouteName(),
+        ]);
     }
 
     public function show($id): View

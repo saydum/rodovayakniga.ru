@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Columns\HumanTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Human extends Model
 {
-    use HasFactory;
+    use HasFactory, HumanTrait;
 
     protected $table = "humans";
 
@@ -26,7 +27,6 @@ class Human extends Model
         'biography',
         'user_id',
         'rod_id',
-        'deleted',
     ];
 
     public function user(): BelongsTo

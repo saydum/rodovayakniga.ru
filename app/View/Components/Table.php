@@ -7,13 +7,15 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
 
-class TableHumans extends Component
+class Table extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct(
-        public Collection $humans,
+        public Collection $datas,
+        public array $columns = [],
+        public string $route = ''
     )
     {}
 
@@ -22,6 +24,6 @@ class TableHumans extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.table-humans');
+        return view('components.table');
     }
 }

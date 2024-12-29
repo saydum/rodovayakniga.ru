@@ -14,8 +14,26 @@ use Illuminate\Http\RedirectResponse;
 class HumanController extends CrudController
 {
     protected string $modelClass = Human::class;
-    protected string $viewPrefix = 'humans';
-//
+
+    protected function getColumns(): array
+    {
+        return [
+            'name' => 'Имя',
+            'last_name' => 'Отчество',
+            'surname' => 'Фамилия',
+            'birth_date' => 'Дата рождения',
+            'image' => 'Фото',
+            'mother_id' => 'Мать',
+            'father_id' => 'Отец',
+        ];
+    }
+
+    protected function getRouteName(): string
+    {
+        return 'humans';
+    }
+
+    //
 //    public function index(): View
 //    {
 //        return view('application.humans.index', [
