@@ -52,7 +52,6 @@ class Human extends Model
         return $this->hasMany(RodovayaknigaPage::class);
     }
 
-
     public function shareTreeLink(): HasOne
     {
         return $this->hasOne(ShareTreeLink::class, 'human_id', 'id');

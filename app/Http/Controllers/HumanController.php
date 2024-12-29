@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Human;
+use Illuminate\Database\Eloquent\Collection;
 
 class HumanController extends CrudController
 {
-    protected string $modelClass = Human::class;
-
     protected function getColumns(): array
     {
         return [
@@ -21,6 +20,11 @@ class HumanController extends CrudController
     protected function getRouteName(): string
     {
         return 'humans';
+    }
+
+    protected function modelClass(): Collection
+    {
+        return Human::all();
     }
 
     //

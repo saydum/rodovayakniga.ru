@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rodovayakniga;
+use Illuminate\Database\Eloquent\Collection;
+
 class RodovayaknigaController extends CrudController
 {
 
@@ -15,5 +18,10 @@ class RodovayaknigaController extends CrudController
     protected function getRouteName(): string
     {
         return 'rodovayaknigas';
+    }
+
+    protected function modelClass(): Collection
+    {
+        return Rodovayakniga::all();
     }
 }

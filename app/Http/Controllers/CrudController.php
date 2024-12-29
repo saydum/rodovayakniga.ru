@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Traits\UploadFile;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -11,17 +12,15 @@ abstract class CrudController extends Controller
 {
     use UploadFile;
 
-    protected string $modelClass;
-
     abstract protected function getColumns(): array;
     abstract protected function getRouteName(): string;
+    abstract protected function modelClass(): Collection;
 
     public function index(): View
     {
-        $model = app($this->modelClass);
 
         return view("crud.index", [
-            'datas' => $model::all(),
+            'datas' => $this->modelClass(),
             'columns' => $this->getColumns(),
             'route' => $this->getRouteName(),
         ]);

@@ -9,14 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Rod extends Model
 {
-    use SoftDeletes;
-
     protected $table = 'rods';
 
     protected $fillable = [
         'name',
         'user_id',
-        'deleted',
     ];
 
     public function user(): BelongsTo
