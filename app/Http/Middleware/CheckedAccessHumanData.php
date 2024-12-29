@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Human;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,10 +16,10 @@ class CheckedAccessHumanData
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $human = $request->route('human');
+        $humanId = $request->route('human');
+        $human = Human::find($humanId);
         if (isset($human)) {
-
-            if ($human->user_id !== auth()->user()->id) {
+            if ($human->user->id !== auth()->user()->id) {
                 return abort(403);
             }
         }

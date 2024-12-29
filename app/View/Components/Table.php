@@ -13,7 +13,7 @@ class Table extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public Collection $datas,
+        public Collection $model,
         public array $columns = [],
         public string $route = ''
     )

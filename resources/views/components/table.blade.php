@@ -9,7 +9,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($datas as $item)
+        @foreach($model as $item)
             <tr>
                 @foreach($columns as $field => $alias)
                     <td>

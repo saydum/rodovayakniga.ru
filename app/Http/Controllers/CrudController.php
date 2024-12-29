@@ -18,9 +18,8 @@ abstract class CrudController extends Controller
 
     public function index(): View
     {
-
         return view("crud.index", [
-            'datas' => $this->modelClass(),
+            'model' => $this->modelClass(),
             'columns' => $this->getColumns(),
             'route' => $this->getRouteName(),
         ]);
@@ -28,12 +27,11 @@ abstract class CrudController extends Controller
 
     public function show($id): View
     {
-        $model = app($this->modelClass);
-        $data = $model::find($id);
-
-        if (!$data) return abort(404);
-
-        return view("application.{$this->viewPrefix}.show", compact('data'));
+        return view("crud.show", [
+            'model' => $this->modelClass()->findOrFail($id),
+            'columns' => $this->getColumns(),
+            'route' => $this->getRouteName(),
+        ]);
     }
 
     public function create(): View
