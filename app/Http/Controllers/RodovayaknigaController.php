@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 class RodovayaknigaController extends CrudController
 {
 
-    protected function getColumns(): array
+    protected function getColumnsAliasFilter(): array
     {
         return [
             'name' => 'Название',
@@ -20,8 +20,21 @@ class RodovayaknigaController extends CrudController
         return 'rodovayaknigas';
     }
 
-    protected function modelClass(): Collection
+    protected function modelData(): Collection
     {
         return Rodovayakniga::all();
+    }
+
+    protected function getFilterColumnsForCreate(): array
+    {
+        return [
+            'name',
+            'description'
+        ];
+    }
+
+    protected function modelClass(): string
+    {
+        return Rodovayakniga::class;
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class RodController extends CrudController
 {
-    protected function getColumns(): array
+    protected function getColumnsAliasFilter(): array
     {
         return [
             'name' => 'Род',
@@ -19,8 +19,20 @@ class RodController extends CrudController
         return 'roda';
     }
 
-    protected function modelClass(): Collection
+    protected function modelData(): Collection
     {
         return Rod::all();
+    }
+
+    protected function getFilterColumnsForCreate(): array
+    {
+        return [
+            'name'
+        ];
+    }
+
+    protected function modelClass(): string
+    {
+        return Rod::class;
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class HumanController extends CrudController
 {
-    protected function getColumns(): array
+    protected function getColumnsAliasFilter(): array
     {
         return [
             'name' => 'Имя',
@@ -17,14 +17,34 @@ class HumanController extends CrudController
         ];
     }
 
+    protected function getFilterColumnsForCreate(): array
+    {
+        return [
+            'name',
+            'last_name',
+            'surname',
+            'birth_date',
+            'image',
+            'mother_id',
+            'father_id',
+            'rod_id',
+            'biography'
+        ];
+    }
+
     protected function getRouteName(): string
     {
         return 'humans';
     }
 
-    protected function modelClass(): Collection
+    protected function modelData(): Collection
     {
         return Human::all();
+    }
+
+    protected function modelClass(): string
+    {
+        return Human::class;
     }
 
     //

@@ -7,20 +7,29 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 abstract class CrudController extends Controller
 {
     use UploadFile;
 
-    abstract protected function getColumns(): array;
+    abstract protected function modelClass(): string;
+    abstract protected function modelData(): Collection;
     abstract protected function getRouteName(): string;
-    abstract protected function modelClass(): Collection;
+    abstract protected function getColumnsAliasFilter(): array;
+    abstract protected function getFilterColumnsForCreate(): array;
+
+
+    protected function getColumnsByTable(string $name): array
+    {
+        return DB::connection()->getSchemaBuilder()->getColumnListing($name);
+    }
 
     public function index(): View
     {
         return view("crud.index", [
-            'model' => $this->modelClass(),
-            'columns' => $this->getColumns(),
+            'model' => $this->modelData(),
+            'columns' => $this->getColumnsAliasFilter(),
             'route' => $this->getRouteName(),
         ]);
     }
@@ -28,30 +37,35 @@ abstract class CrudController extends Controller
     public function show($id): View
     {
         return view("crud.show", [
-            'model' => $this->modelClass()->findOrFail($id),
-            'columns' => $this->getColumns(),
+            'model' => $this->modelData()->findOrFail($id),
+            'columns' => $this->getColumnsAliasFilter(),
             'route' => $this->getRouteName(),
         ]);
     }
 
     public function create(): View
     {
-        return view("application.{$this->viewPrefix}.create");
+        $tableName = $this->getRouteName();
+
+        return view("crud.create", [
+            'model' => $this->getColumnsByTable($tableName),
+            'columns' => $this->getFilterColumnsForCreate(),
+            'route' => $this->getRouteName(),
+        ]);
     }
 
     public function store(Request $request): RedirectResponse
     {
         $data = $request->all();
-        $model = app($this->modelClass);
 
         if ($request->hasFile('image')) {
             $data['image'] = $this->uploadImage($request->file('image'));
         }
-
-        $model->create($data);
+        $model = $this->modelClass();
+        $model::create($data);
 
         return redirect()
-            ->route("application.{$this->viewPrefix}.index")
+            ->route($this->getRouteName() . '.index')
             ->with('success', 'Created successfully')
         ;
     }
