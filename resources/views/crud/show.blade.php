@@ -11,8 +11,9 @@
                     <div class="col">
                         @foreach ($model->toArray() as $key => $value)
                             @empty(!$value)
-                                <div class="card py-2 p-2">
-                                    {{ $key . " - " . $value }}
+                                <div class="py-2 p-2">
+                                    <b>{{ $key }}</b> - {{ $value }}
+                                    <hr>
                                 </div>
                             @endempty
                         @endforeach
