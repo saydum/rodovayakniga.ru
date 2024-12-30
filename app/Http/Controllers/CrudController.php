@@ -100,15 +100,12 @@ abstract class CrudController extends Controller
 
     public function destroy($id): RedirectResponse
     {
-        $model = app($this->modelClass);
-        $data = $model->find($id);
-
-        if (!$data) return abort(404);
+        $data = $this->modelData()->findOrFail($id);
 
         $data->delete();
 
         return redirect()
-            ->route("application.{$this->viewPrefix}.index")
+            ->route($this->getRouteName() . '.index')
             ->with('success', 'Deleted successfully')
         ;
     }
