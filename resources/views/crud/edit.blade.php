@@ -8,8 +8,9 @@
 
             <x-forms.alert.errors/>
 
-            <form action="{{ route($route . '.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route($route . '.update', $model->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <input name="user_id" hidden="hidden" value="{{ auth()->user()->id }}">
 
                 @foreach($model->getAttributes() as $key => $val)

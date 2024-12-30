@@ -73,9 +73,7 @@ abstract class CrudController extends Controller
 
     public function edit($id): View
     {
-        /** @var Model $model*/
         $model = $this->modelData()->findOrFail($id);
-        if (!$model) return abort(404);
 
         return view("crud.edit", [
             'model' => $model,
@@ -86,9 +84,7 @@ abstract class CrudController extends Controller
     public function update(Request $request, $id): RedirectResponse
     {
         $data = $request->all();
-        if (!$data) return abort(404);
-
-        $model = app($this->modelClass);
+        $model = $this->modelData()->findOrFail($id);
 
         if ($request->hasFile('image')) {
             $data['image'] = $this->uploadImage($request->file('image'));
@@ -97,7 +93,7 @@ abstract class CrudController extends Controller
         $model->update($data);
 
         return redirect()
-            ->route("application.{$this->viewPrefix}.index")
+            ->route($this->getRouteName() . '.index')
             ->with('success', 'Updated successfully')
         ;
     }
