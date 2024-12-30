@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Traits\UploadFile;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -72,12 +73,14 @@ abstract class CrudController extends Controller
 
     public function edit($id): View
     {
-        $model = app($this->modelClass);
-        $data = $model::find($id);
+        /** @var Model $model*/
+        $model = $this->modelData()->findOrFail($id);
+        if (!$model) return abort(404);
 
-        if (!$data) return abort(404);
-
-        return view("application.{$this->viewPrefix}.edit", compact('data'));
+        return view("crud.edit", [
+            'model' => $model,
+            'route' => $this->getRouteName(),
+        ]);
     }
 
     public function update(Request $request, $id): RedirectResponse
