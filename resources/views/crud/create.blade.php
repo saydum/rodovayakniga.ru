@@ -1,6 +1,6 @@
 @extends('layouts.app.layout')
 
-@section('title', 'null')
+@section('title', 'create')
 
 @section('content')
     <div class="card card-success card-outline">

@@ -1,6 +1,6 @@
 @extends('layouts.app.layout')
 
-@section('title', 'Родственник')
+@section('title', 'index')
 
 @section('content')
     <div class="row">
