@@ -2,23 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\CrudControllerInterface;
 use App\Traits\UploadFile;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-abstract class CrudController extends Controller
+abstract class CrudController extends Controller implements CrudControllerInterface
 {
     use UploadFile;
-
-    abstract protected function modelClass(): string;
-    abstract protected function modelData(): Collection;
-    abstract protected function getRouteName(): string;
-    abstract protected function getColumnsAliasFilter(): array;
-    abstract protected function getFilterColumnsForCreate(): array;
-
 
     protected function getColumnsByTable(string $name): array
     {
