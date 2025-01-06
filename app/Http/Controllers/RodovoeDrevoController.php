@@ -46,4 +46,30 @@ class RodovoeDrevoController extends Controller
         ]);
     }
 
+    public function test()
+    {
+        $human = Human::first();
+        $siblings = $human->siblings;
+        $unclesAndAunts = $human?->father?->unclesAndAunts();
+
+        $all = [
+            1 => 'Родители',
+            'father' => $human?->father->name,
+            'mother' => $human?->mother->name,
+
+            2 => 'Родители моего отца',
+            'fatherGrandfather' => $human?->father?->father?->name,
+            'fatherGrandmother' => $human?->father?->mother?->name,
+
+            3 => 'Мои братья и Сестры',
+            'siblings' => $siblings->pluck('name')->toArray(),  // Получаем массив всех имен братьев и сестер
+
+            4 => 'Дядя и Тети',
+            'unclesAndAunts' => $unclesAndAunts->pluck('name')->toArray(),
+
+        ];
+
+        dd($all);
+    }
+
 }

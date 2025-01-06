@@ -47,9 +47,28 @@ class Human extends Model
         return $this->belongsTo(Human::class, 'mother_id');
     }
 
-    public function pages(): HasMany
+    public function siblings(): HasMany
     {
-        return $this->hasMany(RodovayaknigaPage::class);
+        return $this->hasMany(Human::class, 'father_id', 'mother_id')
+            ->orWhere('mother_id', $this->mother_id)
+            ->where('id','!=', $this->id)
+        ;
+    }
+
+    public function unclesAndAunts()
+    {
+        // Получаем братьев и сестер отца
+        $fatherSiblings = Human::where('father_id', $this->father_id)
+            ->where('id', '!=', $this->id) // Исключаем самого себя
+            ->get();
+
+        // Получаем братьев и сестер матери
+        $motherSiblings = Human::where('mother_id', $this->mother_id)
+            ->where('id', '!=', $this->id) // Исключаем самого себя
+            ->get();
+
+        // Возвращаем объединенные коллекции
+        return $fatherSiblings->merge($motherSiblings);
     }
 
     public function shareTreeLink(): HasOne

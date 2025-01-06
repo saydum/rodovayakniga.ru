@@ -11,6 +11,8 @@ Route::middleware(['auth', 'check.access.human.data'])->group(function () {
 
     Route::get('/app', [RodovoeDrevoController::class, 'index'])
         ->name('app');
+    Route::get('/test', [RodovoeDrevoController::class, 'test'])
+        ->name('test');
 
     Route::resource('roda', RodController::class);
 
