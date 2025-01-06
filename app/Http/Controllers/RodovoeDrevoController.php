@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Human;
+use App\Services\RelationHumansService;
 use App\Services\ShareTreeLinkService;
 
 class RodovoeDrevoController extends Controller
 {
     public function __construct(
-       protected ShareTreeLinkService $shareTreeLinkService
+        protected ShareTreeLinkService $shareTreeLinkService,
+        protected RelationHumansService $relationHumansService,
     )
-    {}
+    {
+    }
 
     public function index(Human $human = null)
     {
@@ -33,7 +36,6 @@ class RodovoeDrevoController extends Controller
         $motherGrandmother = $mother?->mother;
 
 
-
         return view('application.rodovoe-drevo.index', [
             'human' => $human,
             'father' => $father,
@@ -54,18 +56,16 @@ class RodovoeDrevoController extends Controller
 
         $all = [
             1 => 'Родители',
-            'father' => $human?->father->name,
-            'mother' => $human?->mother->name,
+            'parent' => $this->relationHumansService->getParent($human),
 
             2 => 'Родители моего отца',
-            'fatherGrandfather' => $human?->father?->father?->name,
-            'fatherGrandmother' => $human?->father?->mother?->name,
+            'parent1' => $this->relationHumansService->getParent($human?->father),
 
             3 => 'Мои братья и Сестры',
             'siblings' => $siblings->pluck('name')->toArray(),  // Получаем массив всех имен братьев и сестер
 
             4 => 'Дядя и Тети',
-            'unclesAndAunts' => $unclesAndAunts->pluck('name')->toArray(),
+            'unclesAndAunts' => $this->relationHumansService->getUnclesAndAunts($human, 'father'),
 
         ];
 
