@@ -11,4 +11,5 @@ interface CrudControllerInterface
      function getRouteName(): string;
      function getColumnsAliasFilter(): array;
      function getFilterColumnsForCreate(): array;
+     function getExtendActions(): array;
 }

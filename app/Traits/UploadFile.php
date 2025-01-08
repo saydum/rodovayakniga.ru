@@ -4,15 +4,12 @@ namespace App\Traits;
 
 trait UploadFile
 {
-    public function uploadImage(mixed $request): array|null
+    public function uploadImage(mixed $request): string|null
     {
-        $input = $request->validated();
-
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('images', 'public');
-            $input['image'] = "storage/".$path;
+            return "storage/".$path;
         }
-
-        return $input;
+        return null;
     }
 }

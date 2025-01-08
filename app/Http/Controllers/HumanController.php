@@ -46,4 +46,9 @@ class HumanController extends CrudController
     {
         return Human::class;
     }
+
+    function getExtendActions(): array
+    {
+        return [];
+    }
 }

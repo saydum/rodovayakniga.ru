@@ -10,7 +10,7 @@
                     <a href="{{ route("$route.create") }}" class="btn btn-success">Добавить</a>
                 </div>
 
-                <x-table :model="$model" :columns="$columns" :route="$route"/>
+                <x-table :model="$model" :columns="$columns" :route="$route" :extendActions="$extendActions"/>
             </div>
         </div>
     </div>

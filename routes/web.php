@@ -7,11 +7,11 @@ use App\Http\Controllers\Web\WebController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth', 'check.access.human.data'])->group(function () {
+Route::middleware(['auth'])->group(function () { //'check.access.human.data'
 
-    Route::get('/app', [RodovoeDrevoController::class, 'index'])
+    Route::get('/app/{rod}', [RodovoeDrevoController::class, 'index'])
         ->name('app');
-    Route::get('/test', [RodovoeDrevoController::class, 'test'])
+    Route::get('/test/{rod}', [RodovoeDrevoController::class, 'test'])
         ->name('test');
 
     Route::resource('roda', RodController::class);

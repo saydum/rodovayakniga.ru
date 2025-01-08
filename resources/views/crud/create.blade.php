@@ -14,13 +14,23 @@
 
                 @foreach($columns as $key => $val)
                     <div class="row">
-                        <x-input
-                            type="text"
-                            name="{{ $val }}"
-                            title="{{ $val }}"
-                            placeholder="Ведите {{$val}}"
-                            value="{{ old($val) }}"
-                        />
+                        @if($val === 'image')
+                            <x-input
+                                type="file"
+                                name="{{ $val }}"
+                                title="{{ $val }}"
+                                placeholder="Ведите {{$val}}"
+                                value="{{ old($val) }}"
+                            />
+                        @else
+                            <x-input
+                                type="text"
+                                name="{{ $val }}"
+                                title="{{ $val }}"
+                                placeholder="Ведите {{$val}}"
+                                value="{{ old($val) }}"
+                            />
+                        @endif
                     </div>
                 @endforeach
 

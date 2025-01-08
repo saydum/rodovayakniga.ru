@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Human;
+use App\Models\Rod;
 use App\Services\RelationHumansService;
 use App\Services\ShareTreeLinkService;
 
@@ -15,10 +15,12 @@ class RodovoeDrevoController extends Controller
     {
     }
 
-    public function index(Human $human = null)
+    public function index(Rod $rod)
     {
-        $humans = Human::all();
         $shareTreeLink = "";
+
+        $humans = $rod->humans();
+        $human = $rod->humans()->first();
 
         if ($human === null && count($humans) !== 0) {
             $human = $humans->first();
@@ -26,31 +28,24 @@ class RodovoeDrevoController extends Controller
         }
 
         // Получаем родителей
-        $father = $human?->father;
-        $mother = $human?->mother;
+        $parent = $this->relationHumansService->getParent($human);
 
         // Получаем дедушек и бабушек по линии отца и матери
-        $fatherGrandfather = $father?->father;
-        $fatherGrandmother = $father?->mother;
-        $motherGrandfather = $mother?->father;
-        $motherGrandmother = $mother?->mother;
-
+        $parentFather = $this->relationHumansService->getParent($parent['father']);
+        $parentMother = $this->relationHumansService->getParent($parent['mother']);
 
         return view('application.rodovoe-drevo.index', [
             'human' => $human,
-            'father' => $father,
-            'mother' => $mother,
-            'fatherGrandfather' => $fatherGrandfather,
-            'fatherGrandmother' => $fatherGrandmother,
-            'motherGrandfather' => $motherGrandfather,
-            'motherGrandmother' => $motherGrandmother,
+            'parent' => $parent,
+            'parentFather' => $parentFather,
+            'parentMother' => $parentMother,
             'shareTreeLink' => $shareTreeLink,
         ]);
     }
 
-    public function test()
+    public function test(Rod $rod = null)
     {
-        $human = Human::first();
+        $human = $rod->humans()->first();
         $siblings = $human->siblings;
         $unclesAndAunts = $human?->father?->unclesAndAunts();
 

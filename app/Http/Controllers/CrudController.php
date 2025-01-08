@@ -24,6 +24,7 @@ abstract class CrudController extends Controller implements CrudControllerInterf
             'model' => $this->modelData(),
             'columns' => $this->getColumnsAliasFilter(),
             'route' => $this->getRouteName(),
+            'extendActions' => $this->getExtendActions(),
         ]);
     }
 
@@ -52,7 +53,7 @@ abstract class CrudController extends Controller implements CrudControllerInterf
         $data = $request->all();
 
         if ($request->hasFile('image')) {
-            $data['image'] = $this->uploadImage($request->file('image'));
+            $data['image'] = $this->uploadImage($request);
         }
         $model = $this->modelClass();
         $model::create($data);
@@ -79,7 +80,7 @@ abstract class CrudController extends Controller implements CrudControllerInterf
         $model = $this->modelData()->findOrFail($id);
 
         if ($request->hasFile('image')) {
-            $data['image'] = $this->uploadImage($request->file('image'));
+            $data['image'] = $this->uploadImage($request);
         }
 
         $model->update($data);

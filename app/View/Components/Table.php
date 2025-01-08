@@ -15,6 +15,7 @@ class Table extends Component
     public function __construct(
         public Collection $model,
         public array $columns = [],
+        public array $extendActions = [],
         public string $route = ''
     )
     {}

@@ -35,4 +35,13 @@ class RodController extends CrudController
     {
         return Rod::class;
     }
+
+    function getExtendActions(): array
+    {
+        return [
+            'route' => 'app',
+            'icon' => 'tree',
+            'class' => 'outline-success',
+        ];
+    }
 }

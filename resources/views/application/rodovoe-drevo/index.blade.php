@@ -51,8 +51,8 @@
             <div class="col">
 
                 <div class="tree">
+                    <ul class="tree_ul">
                     @isset($human)
-                        <ul class="tree_ul">
                             <li class="tree_li">
                                 {{-- 1 --}}
                                 <div class="tree_card">
@@ -66,51 +66,52 @@
                                         <p class=""> {{ $human->name. " " .  $human->last_name . " " . $human->surname}}</p>
                                     </a>
                                 </div>
+
                                 {{-- E1--}}
                                 <ul class="tree_ul">
-                                    @isset($father)
+                                    @isset($parent['father'])
                                         <li class="tree_li">
                                             <div class="tree_card">
                                                 <a
-                                                    href="{{ route('humans.show', $father->id) }}"
+                                                    href="{{ route('humans.show', $parent['father']->id) }}"
                                                     data-mdb-ripple-init
                                                     data-mdb-modal-init
                                                     data-mdb-target="#show-info-modal"
                                                 >
-                                                    <img class="img-fluid" src="{{ asset($father->image) }}">
-                                                    <p>{{ $father->name . " " . $father->last_name . " " . $father->surname }}</p>
+                                                    <img class="img-fluid" src="{{ asset($parent['father']->image) }}">
+                                                    <p>{{ $parent['father']->name . " " . $parent['father']->last_name . " " . $parent['father']->surname }}</p>
                                                 </a>
                                             </div>
                                             <ul class="tree_ul">
-                                                @isset($fatherGrandfather)
+                                                @isset($parentFather['father'])
                                                     <li class="tree_li">
                                                         <div class="tree_card">
                                                             <a
-                                                                href="{{ route('humans.show', $fatherGrandfather->id) }}"
+                                                                href="{{ route('humans.show', $parentFather['father']->id) }}"
                                                                 data-mdb-ripple-init
                                                                 data-mdb-modal-init
                                                                 data-mdb-target="#show-info-modal"
                                                             >
                                                                 <img class="img-fluid"
-                                                                     src="{{ asset($fatherGrandfather->image) }}"/>
-                                                                <p>{{ $fatherGrandfather->name . " " . $fatherGrandfather->last_name . " " . $fatherGrandfather->surname }}</p>
+                                                                     src="{{ asset($parentFather['father']->image) }}"/>
+                                                                <p>{{ $parentFather['father']->name . " " . $parentFather['father']->last_name . " " . $parentFather['father']->surname }}</p>
 
                                                             </a>
                                                         </div>
                                                     </li>
                                                 @endisset
-                                                @isset($fatherGrandmother)
+                                                @isset($parentFather['mother'])
                                                     <li class="tree_li">
                                                         <div class="tree_card">
                                                             <a
-                                                                href="{{ route('humans.show', $fatherGrandmother->id) }}"
+                                                                href="{{ route('humans.show', $parentFather['mother']->id) }}"
                                                                 data-mdb-ripple-init
                                                                 data-mdb-modal-init
                                                                 data-mdb-target="#show-info-modal"
                                                             >
                                                                 <img class="img-fluid"
-                                                                     src="{{ asset($fatherGrandmother->image) }}">
-                                                                <p>{{ $fatherGrandmother->name . " " . $fatherGrandmother->last_name . " " . $fatherGrandmother->surname }}</p>
+                                                                     src="{{ asset($parentFather['mother']->image) }}">
+                                                                <p>{{ $parentFather['mother']->name . " " . $parentFather['mother']->last_name . " " . $parentFather['mother']->surname }}</p>
                                                             </a>
                                                         </div>
                                                     </li>
@@ -119,49 +120,49 @@
                                         </li>
                                     @endisset
 
-                                    @isset($mother)
+                                    @isset($parent['mother'])
                                         <li class="tree_li">
                                             <div class="tree_card">
                                                 <a
-                                                    href="{{ route('humans.show', $mother->id) }}"
+                                                    href="{{ route('humans.show', $parent['mother']->id) }}"
                                                     data-mdb-ripple-init
                                                     data-mdb-modal-init
                                                     data-mdb-target="#show-info-modal"
                                                 >
-                                                    <img class="img-fluid" src="{{ asset($mother->image) }}">
-                                                    <p>{{ $mother->name . " " . $mother->last_name . " " . $mother->surname }}</p>
+                                                    <img class="img-fluid" src="{{ asset($parent['mother']->image) }}">
+                                                    <p>{{ $parent['mother']->name . " " . $parent['mother']->last_name . " " . $parent['mother']->surname }}</p>
                                                 </a>
                                             </div>
                                             <ul class="tree_ul">
-                                                @isset($motherGrandfather)
+                                                @isset($parentMother['father'])
                                                     <li class="tree_li">
                                                         <div class="tree_card">
                                                             <a
-                                                                href="{{ route('humans.show', $motherGrandfather->id) }}"
+                                                                href="{{ route('humans.show', $parentMother['father']->id) }}"
                                                                 data-mdb-ripple-init
                                                                 data-mdb-modal-init
                                                                 data-mdb-target="#show-info-modal"
                                                             >
                                                                 <img class="img-fluid"
-                                                                     src="{{ asset($motherGrandfather->image) }}">
-                                                                <p>{{ $motherGrandfather->name . " " . $motherGrandfather->last_name . " " . $motherGrandfather->surname }}</p>
+                                                                     src="{{ asset($parentMother['father']->image) }}">
+                                                                <p>{{ $parentMother['father']->name . " " . $parentMother['father']->last_name . " " . $parentMother['father']->surname }}</p>
 
                                                             </a>
                                                         </div>
                                                     </li>
                                                 @endisset
-                                                @isset($motherGrandmother)
+                                                @isset($parentMother['mother'])
                                                     <li class="tree_li">
                                                         <div class="tree_card">
                                                             <a
-                                                                href="{{ route('humans.show', $motherGrandmother->id) }}"
+                                                                href="{{ route('humans.show', $parentMother['mother']->id) }}"
                                                                 data-mdb-ripple-init
                                                                 data-mdb-modal-init
                                                                 data-mdb-target="#show-info-modal"
                                                             >
                                                                 <img class="img-fluid"
-                                                                     src="{{ asset($motherGrandmother->image) }}">
-                                                                <p>{{ $motherGrandmother->name . " " . $motherGrandmother->last_name . " " . $motherGrandmother->surname }}</p>
+                                                                     src="{{ asset($parentMother['mother']->image) }}">
+                                                                <p>{{ $parentMother['mother']->name . " " . $parentMother['mother']->last_name . " " . $parentMother['mother']->surname }}</p>
                                                             </a>
                                                         </div>
                                                     </li>

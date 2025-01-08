@@ -15,13 +15,23 @@
 
                 @foreach($model->getAttributes() as $key => $val)
                     <div class="row">
-                        <x-input
-                            type="text"
-                            name="{{ $key }}"
-                            title="{{ $key }}"
-                            placeholder="Ведите {{$key}}"
-                            value="{{ $val }}"
-                        />
+                        @if($key === 'image')
+                            <x-input
+                                type="file"
+                                name="{{ $key }}"
+                                title="{{ $key }}"
+                                placeholder="Ведите {{$key}}"
+                                value="{{ $val }}"
+                            />
+                        @else
+                            <x-input
+                                type="text"
+                                name="{{ $key }}"
+                                title="{{ $key }}"
+                                placeholder="Ведите {{$key}}"
+                                value="{{ $val }}"
+                            />
+                        @endif
                     </div>
                 @endforeach
 

@@ -23,13 +23,20 @@
                 @endforeach
                 {{-- Действия --}}
                 <td class="text-end">
+                    @if(count($extendActions))
+                        <a class="btn btn-{{$extendActions['class']}}"
+                           href="{{ route($extendActions['route'], $item->id) }}">
+                            <i class="bi bi-{{$extendActions['icon']}}"></i>
+                        </a>
+                    @endif
                     <a class="btn btn-success" href="{{ route($route . '.show', $item->id) }}">
                         <i class="bi bi-eye"></i>
                     </a>
                     <a class="btn btn-primary" href="{{ route($route . '.edit', $item->id) }}">
                         <i class="bi bi-pencil-square"></i>
                     </a>
-                    <form action="{{ route($route . '.destroy', $item->id) }}" method="POST" style="display:inline-block;">
+                    <form action="{{ route($route . '.destroy', $item->id) }}" method="POST"
+                          style="display:inline-block;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">
