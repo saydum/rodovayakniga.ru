@@ -84,7 +84,7 @@
                     @if (Route::has('login'))
                         @auth
                             <li>
-                                <a href="{{ route('app') }}">Приложение</a>
+                                <a href="{{ route('roda.index') }}">Приложение</a>
                             </li>
                         @else
                             <li>

@@ -13,7 +13,7 @@
                             М.В.Ломоносов
                         </p>
                         <div class="wow fadeInDown" data-wow-delay="0.3s">
-                            <a class="btn btn-default btn-home" href="{{ route('app') }}">
+                            <a class="btn btn-default btn-home" href="{{ route('roda.index') }}">
                                 Начать
                             </a>
                         </div>

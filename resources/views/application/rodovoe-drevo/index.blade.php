@@ -52,7 +52,7 @@
 
                 <div class="tree">
                     <ul class="tree_ul">
-                    @isset($human)
+                        @isset($human)
                             <li class="tree_li">
                                 {{-- 1 --}}
                                 <div class="tree_card">
@@ -172,7 +172,7 @@
                                     @endisset
                                 </ul>
                             </li>
-                        </ul>
+                    </ul>
                     @endisset
                 </div>
             </div>
