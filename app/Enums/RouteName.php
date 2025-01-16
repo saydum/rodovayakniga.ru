@@ -5,7 +5,7 @@ namespace App\Enums;
 enum RouteName: string
 {
     // APP
-    case APP = 'app';
+    case APP = 'dashboard';
 
     // AUTH
     case LOGIN = 'login';

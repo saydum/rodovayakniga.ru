@@ -39,7 +39,7 @@ class RodController extends CrudController
     function getExtendActions(): array
     {
         return [
-            'route' => 'app',
+            'route' => 'tree',
             'icon' => 'tree',
             'class' => 'outline-success',
         ];

@@ -3,5 +3,5 @@
 @section('title', 'Главная страница')
 
 @section('content')
-    Hello world
+    Dashboard
 @endsection
