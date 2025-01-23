@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () { //'check.access.human.data'
 
-    Route::get('/app', [DashboardController::class, 'index'])
-        ->name('app');
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
 
     Route::get('/tree/{rod}', [RodovoeDrevoController::class, 'index'])
         ->name('tree');
