@@ -4,4 +4,5 @@
 
 @section('content')
     Dashboard
+    <x-pop-up-window />
 @endsection

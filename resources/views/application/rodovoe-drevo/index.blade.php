@@ -66,6 +66,8 @@
                                         <p class=""> {{ $human->name. " " .  $human->last_name . " " . $human->surname}}</p>
                                     </a>
                                 </div>
+                                <x-pop-up-window />
+
 
                                 {{-- E1--}}
                                 <ul class="tree_ul">
