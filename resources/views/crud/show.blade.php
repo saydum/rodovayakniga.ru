@@ -6,6 +6,7 @@
     <div class="col">
         <div class="card card-success card-outline">
             <div class="card-body box-profile">
+                <x-back-button />
 
                 <div class="row">
                     <div class="col">

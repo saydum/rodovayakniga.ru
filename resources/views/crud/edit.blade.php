@@ -5,7 +5,7 @@
 @section('content')
     <div class="card card-success card-outline">
         <div class="card-body">
-
+            <x-back-button />
             <x-forms.alert.errors/>
 
             <form action="{{ route($route . '.update', $model->id) }}" method="post" enctype="multipart/form-data">
