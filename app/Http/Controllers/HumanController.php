@@ -32,17 +32,18 @@ class HumanController extends CrudController
 
     public function getFormFields(\Illuminate\Database\Eloquent\Model|null $model = null): array
     {
-        $humans = Human::all()->pluck('name', 'id')->toArray();
+        $humans = Human::all();
         $rods = Rod::all()->pluck('name', 'id')->toArray();
 
         return [
             ['name' => 'name', 'type' => 'text', 'label' => 'Имя'],
+            ['name' => 'gender', 'type' => 'select', 'label' => 'Пол', 'options' => ['male' => 'Мужской', 'female' => 'Женский']],
             ['name' => 'last_name', 'type' => 'text', 'label' => 'Отчество'],
             ['name' => 'surname', 'type' => 'text', 'label' => 'Фамилия'],
             ['name' => 'birth_date', 'type' => 'date', 'label' => 'Дата рождения'],
             ['name' => 'image', 'type' => 'file', 'label' => 'Фото'],
-            ['name' => 'mother_id', 'type' => 'select', 'label' => 'Мать', 'options' => $humans],
-            ['name' => 'father_id', 'type' => 'select', 'label' => 'Отец', 'options' => $humans],
+            ['name' => 'mother_id', 'type' => 'select', 'label' => 'Мать', 'options' => $humans->where('gender', 'female')->pluck('name', 'id')->toArray()],
+            ['name' => 'father_id', 'type' => 'select', 'label' => 'Отец', 'options' => $humans->where('gender', 'male')->pluck('name', 'id')->toArray()],
             ['name' => 'rod_id', 'type' => 'select', 'label' => 'Род', 'options' => $rods],
             ['name' => 'biography', 'type' => 'textarea', 'label' => 'Биография'],
             ['name' => 'user_id', 'type' => 'hidden', 'value' => auth()->id()],

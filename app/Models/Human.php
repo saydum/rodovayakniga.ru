@@ -26,6 +26,7 @@ class Human extends Model
         'biography',
         'user_id',
         'rod_id',
+        'gender',
     ];
 
     public function user(): BelongsTo
