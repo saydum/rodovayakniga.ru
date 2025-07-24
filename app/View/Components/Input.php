@@ -15,9 +15,9 @@ class Input extends Component
         public string $type,
         public string $name,
         public string $title,
-        public string $value = '',
+        public ?string $value = '',
         public string $placeholder  = '',
-        public string $class = 'form-control',
+        public array $options = [],
     )
     {}
 

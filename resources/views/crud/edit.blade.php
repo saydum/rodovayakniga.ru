@@ -11,32 +11,23 @@
             <form action="{{ route($route . '.update', $model->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <input name="user_id" hidden="hidden" value="{{ auth()->user()->id }}">
 
-                @foreach($model->getAttributes() as $key => $val)
+                @foreach($fields as $field)
                     <div class="row">
-                        @if($key === 'image')
-                            <x-input
-                                type="file"
-                                name="{{ $key }}"
-                                title="{{ $key }}"
-                                placeholder="Ведите {{$key}}"
-                                value="{{ $val }}"
-                            />
-                        @else
-                            <x-input
-                                type="text"
-                                name="{{ $key }}"
-                                title="{{ $key }}"
-                                placeholder="Ведите {{$key}}"
-                                value="{{ $val }}"
-                            />
-                        @endif
+                        <x-input
+                            :type="$field['type']"
+                            :name="$field['name']"
+                            :title="$field['label'] ?? $field['name']"
+                            :value="old($field['name'], $model->{$field['name']} ?? ($field['value'] ?? ''))"
+                            :options="$field['options'] ?? []"
+                            :placeholder="$field['placeholder'] ?? ''"
+                        />
                     </div>
                 @endforeach
 
-                <button class="btn btn-success" type="submit">Добавить</button>
+                <button class="btn btn-primary" type="submit">Сохранить</button>
             </form>
+
         </div>
     </div>
 

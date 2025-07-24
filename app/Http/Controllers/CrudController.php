@@ -5,23 +5,40 @@ namespace App\Http\Controllers;
 use App\Contracts\CrudControllerInterface;
 use App\Traits\UploadFile;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 abstract class CrudController extends Controller implements CrudControllerInterface
 {
     use UploadFile;
 
-    protected function getColumnsByTable(string $name): array
+    abstract public function modelClass(): string;
+
+    public function getFormFields(\Illuminate\Database\Eloquent\Model|null $model = null): array
     {
-        return DB::connection()->getSchemaBuilder()->getColumnListing($name);
+        return [];
+    }
+
+    public function modelQuery(): Builder
+    {
+        return $this->modelClass()::query();
+    }
+
+    public function getColumnsAliasFilter(): array
+    {
+        return []; // или автоматически от `fillable`
+    }
+
+    public function getExtendActions(): array
+    {
+        return [];
     }
 
     public function index(): View
     {
         return view("crud.index", [
-            'model' => $this->modelData(),
+            'model' => $this->modelQuery()->paginate(20),
             'columns' => $this->getColumnsAliasFilter(),
             'route' => $this->getRouteName(),
             'extendActions' => $this->getExtendActions(),
@@ -30,8 +47,10 @@ abstract class CrudController extends Controller implements CrudControllerInterf
 
     public function show($id): View
     {
+        $model = $this->modelClass()::findOrFail($id);
+
         return view("crud.show", [
-            'model' => $this->modelData()->findOrFail($id),
+            'model' => $model,
             'columns' => $this->getColumnsAliasFilter(),
             'route' => $this->getRouteName(),
         ]);
@@ -39,11 +58,19 @@ abstract class CrudController extends Controller implements CrudControllerInterf
 
     public function create(): View
     {
-        $tableName = $this->getRouteName();
-
         return view("crud.create", [
-            'model' => $this->getColumnsByTable($tableName),
-            'columns' => $this->getFilterColumnsForCreate(),
+            'fields' => $this->getFormFields(),
+            'route' => $this->getRouteName(),
+        ]);
+    }
+
+    public function edit($id): View
+    {
+        $model = $this->modelClass()::findOrFail($id);
+
+        return view("crud.edit", [
+            'model' => $model,
+            'fields' => $this->getFormFields(),
             'route' => $this->getRouteName(),
         ]);
     }
@@ -55,29 +82,18 @@ abstract class CrudController extends Controller implements CrudControllerInterf
         if ($request->hasFile('image')) {
             $data['image'] = $this->uploadImage($request);
         }
-        $model = $this->modelClass();
-        $model::create($data);
+
+        $this->modelClass()::create($data);
 
         return redirect()
             ->route($this->getRouteName() . '.index')
-            ->with('success', 'Created successfully')
-        ;
-    }
-
-    public function edit($id): View
-    {
-        $model = $this->modelData()->findOrFail($id);
-
-        return view("crud.edit", [
-            'model' => $model,
-            'route' => $this->getRouteName(),
-        ]);
+            ->with('success', 'Создано успешно');
     }
 
     public function update(Request $request, $id): RedirectResponse
     {
+        $model = $this->modelClass()::findOrFail($id);
         $data = $request->all();
-        $model = $this->modelData()->findOrFail($id);
 
         if ($request->hasFile('image')) {
             $data['image'] = $this->uploadImage($request);
@@ -87,19 +103,6 @@ abstract class CrudController extends Controller implements CrudControllerInterf
 
         return redirect()
             ->route($this->getRouteName() . '.index')
-            ->with('success', 'Updated successfully')
-        ;
-    }
-
-    public function destroy($id): RedirectResponse
-    {
-        $data = $this->modelData()->findOrFail($id);
-
-        $data->delete();
-
-        return redirect()
-            ->route($this->getRouteName() . '.index')
-            ->with('success', 'Deleted successfully')
-        ;
+            ->with('success', 'Обновлено успешно');
     }
 }

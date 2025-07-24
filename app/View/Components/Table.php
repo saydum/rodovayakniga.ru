@@ -5,6 +5,7 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\View\Component;
 
 class Table extends Component
@@ -13,7 +14,7 @@ class Table extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public Collection $model,
+        public Paginator|Collection $model,
         public array $columns = [],
         public array $extendActions = [],
         public string $route = ''

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HumanController;
 use App\Http\Controllers\RodController;
 use App\Http\Controllers\RodovoeDrevoController;
@@ -9,9 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () { //'check.access.human.data'
-
-    Route::get('/dashboard', [DashboardController::class, 'index'])
-        ->name('dashboard');
 
     Route::get('/tree/{rod}', [RodovoeDrevoController::class, 'index'])
         ->name('tree');

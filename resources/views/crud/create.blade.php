@@ -1,42 +1,33 @@
-@extends('layouts.app.layout')
+    @extends('layouts.app.layout')
 
-@section('title', 'create')
+    @section('title', 'create')
 
-@section('content')
-    <div class="card card-success card-outline">
-        <div class="card-body">
+    @section('content')
+        <div class="card card-success card-outline">
+            <div class="card-body">
 
-            <x-forms.alert.errors/>
+                <x-forms.alert.errors/>
 
-            <form action="{{ route($route . '.store') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <input name="user_id" hidden="hidden" value="{{ auth()->user()->id }}">
+                <form action="{{ route($route . '.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
 
-                @foreach($columns as $key => $val)
-                    <div class="row">
-                        @if($val === 'image')
+                    @foreach($fields as $field)
+                        <div class="row">
                             <x-input
-                                type="file"
-                                name="{{ $val }}"
-                                title="{{ $val }}"
-                                placeholder="Ведите {{$val}}"
-                                value="{{ old($val) }}"
+                                :type="$field['type']"
+                                :name="$field['name']"
+                                :title="$field['label'] ?? $field['name']"
+                                :value="$field['value'] ?? old($field['name'])"
+                                :options="$field['options'] ?? []"
+                                :placeholder="$field['placeholder'] ?? ''"
                             />
-                        @else
-                            <x-input
-                                type="text"
-                                name="{{ $val }}"
-                                title="{{ $val }}"
-                                placeholder="Ведите {{$val}}"
-                                value="{{ old($val) }}"
-                            />
-                        @endif
-                    </div>
-                @endforeach
+                        </div>
+                    @endforeach
 
-                <button class="btn btn-success" type="submit">Добавить</button>
-            </form>
+                    <button class="btn btn-success" type="submit">Добавить</button>
+                </form>
+
+            </div>
         </div>
-    </div>
 
-@endsection
+    @endsection
