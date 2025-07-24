@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Human;
 use App\Models\Rod;
 use App\Services\RelationHumansService;
 use App\Services\ShareTreeLinkService;
@@ -41,6 +42,12 @@ class RodovoeDrevoController extends Controller
             'parentMother' => $parentMother,
             'shareTreeLink' => $shareTreeLink,
         ]);
+    }
+
+    public function showFragment($id)
+    {
+        $human = Human::with(['father', 'mother'])->findOrFail($id);
+        return view('application.rodovoe-drevo.model', compact('human'));
     }
 
     public function test(Rod $rod = null)

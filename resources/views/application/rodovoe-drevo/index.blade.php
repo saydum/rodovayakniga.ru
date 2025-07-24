@@ -4,7 +4,6 @@
 
 @section('content')
     <link rel="stylesheet" href="{{ asset('application/css/tree.css') }}">
-    @include('application.rodovoe-drevo.script-copy-link')
 
     <div class="card-header text-end d-flex justify-content-end" style="margin-top: -30px;">
         <div class="row justify-content-center">
@@ -13,38 +12,12 @@
                 <a href="{{ route('humans.create') }}" class="btn btn-success">Добавить</a>
             </div>
 
-            @auth()
-                @if($human)
-                    <div class="col-sm">
-                        <button id="copyButton" class="btn btn-outline-success">
-                            <i class="bi bi-copy"></i>
-                        </button>
-                        @isset($shareTreeLink->link)
-                            <label for="copyText"></label>
-                            <input
-                                type="text"
-                                hidden="hidden"
-                                id="copyText" class="form-control"
-                                value="{{ env('APP_URL') }}/rodovoe-drevo/{{$human->id}}/{{ $shareTreeLink->link }}"
-                                readonly
-                            >
-                        @endisset
-                    </div>
-
-                @endif
-            @endauth
+            @include('application.scripts.script-copy-link')
+            @include('application.others.copy-tree-link')
         </div>
     </div>
 
-    {{--    Notifacation --}}
-    <div class="container position-absolute">
-        <div class="row">
-            <div class="col">
-                <div class="text-start notif" id="liveAlertPlaceholder"></div>
-            </div>
-        </div>
-    </div>
-
+    @include('application.others.notification')
 
     <div class="container container-tree">
         <div class="row">
@@ -57,10 +30,17 @@
                                 {{-- 1 --}}
                                 <div class="tree_card">
                                     <a
-                                        href="{{ route('humans.show', $human->id) }}"
-                                        data-mdb-ripple-init
-                                        data-mdb-modal-init
-                                        data-mdb-target="#show-info-modal"
+                                        class="show-human-info"
+                                        data-id="{{ $human->id }}"
+                                        data-name="{{ $human->name }}"
+                                        data-lastname="{{ $human->last_name }}"
+                                        data-surname="{{ $human->surname }}"
+                                        data-gender="{{ $human->gender }}"
+                                        data-image="{{ asset($human->image) }}"
+                                        data-mother="{{ route('humans.create', ['mother_id' => $human->id]) }}"
+                                        data-father="{{ route('humans.create', ['father_id' => $human->id]) }}"
+                                        data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasHumanInfo"
                                     >
                                         <img class="img-fluid" src="{{ asset($human->image) }}">
                                         <p class=""> {{ $human->name. " " .  $human->last_name . " " . $human->surname}}</p>
@@ -73,10 +53,20 @@
                                         <li class="tree_li">
                                             <div class="tree_card">
                                                 <a
-                                                    href="{{ route('humans.show', $parent['father']->id) }}"
                                                     data-mdb-ripple-init
                                                     data-mdb-modal-init
                                                     data-mdb-target="#show-info-modal"
+                                                    class="show-human-info"
+                                                    data-id="{{  $parent['father']->id }}"
+                                                    data-name="{{ $parent['father']->name }}"
+                                                    data-lastname="{{ $parent['father']->last_name }}"
+                                                    data-surname="{{ $parent['father']->surname }}"
+                                                    data-gender="{{ $parent['father']->gender }}"
+                                                    data-image="{{ asset($parent['father']->image) }}"
+                                                    data-mother="{{ route('humans.create', ['mother_id' =>  $parent['father']->id]) }}"
+                                                    data-father="{{ route('humans.create', ['father_id' =>  $parent['father']->id]) }}"
+                                                    data-bs-toggle="offcanvas"
+                                                    data-bs-target="#offcanvasHumanInfo"
                                                 >
                                                     <img class="img-fluid" src="{{ asset($parent['father']->image) }}">
                                                     <p>{{ $parent['father']->name . " " . $parent['father']->last_name . " " . $parent['father']->surname }}</p>
@@ -185,5 +175,8 @@
                 </div>
             </div>
         @endif
+
+        @include('application.rodovoe-drevo.modal')
+        @include('application.scripts.modal-script')
     </div>
 @endsection

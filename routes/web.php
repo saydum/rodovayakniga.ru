@@ -23,6 +23,8 @@ Route::middleware(['auth'])->group(function () { //'check.access.human.data'
 
     Route::get('/rodovoe-drevo/{human}/{link}', [RodovoeDrevoController::class, 'index'])
         ->name('rodovoe-drevo.link');
+
+    Route::get('/humans/{id}/fragment', [RodovoeDrevoController::class, 'showFragment']);
 });
 
 Auth::routes();
